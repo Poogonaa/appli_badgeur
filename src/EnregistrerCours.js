@@ -17,7 +17,10 @@ class EnregistrerCours extends React.Component {
             <div>
                 <h2>Enregistrement d'un cours</h2>
                 <br />
+                <label>Intitulé:</label>
+                <br />
                 <input type="text" name="intitule" value={this.state.cours.intitule} onChange={this.handleChange}/>
+                <br />
                 <br />
                 <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>
             </div>
