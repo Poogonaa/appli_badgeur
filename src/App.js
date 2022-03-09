@@ -7,6 +7,8 @@ import ListerCours from './ListerCours.js'
 import EnregistrerComposante from './EnregistrerComposante.js'
 import ListerComposante from './ListerComposante.js'
 import Accueil from './Accueil.js'
+import EnregistrerIntervenant from './EnregistrerIntervenant.js'
+import ListerIntervenant from './ListerIntervenant.js'
 
 class App extends React.Component {
 
@@ -21,9 +23,12 @@ class App extends React.Component {
           <Routes>
             <Route exact path="/" element={<Accueil />} />
             <Route exact path="/EnregistrerCours" element={<EnregistrerCours />} />
-                    <Route exact path="/ListerCours" element={<ListerCours />} />
-                    <Route exact path="/EnregistrerComposante" element={<EnregistrerComposante />} />
-                    <Route exact path="/ListerComposante" element={<ListerComposante />} />
+            <Route exact path="/ListerCours" element={<ListerCours />} />
+            <Route exact path="/EnregistrerIntervenant" element={<EnregistrerIntervenant/>} />
+            <Route exact path="/ListerIntervenant" element={<ListerIntervenant/>} />
+            <Route exact path="/EnregistrerComposante" element={<EnregistrerComposante />} />
+            <Route exact path="/ListerComposante" element={<ListerComposante />} />
+
           </Routes>
         </Router>
       </div>
