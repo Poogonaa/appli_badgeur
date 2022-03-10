@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React from 'react'
 
-class ListerCompossante extends React.Component {
+class ListerComposante extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            composante: {},
+            composantes: {},
         }
       
     }
@@ -15,7 +15,9 @@ class ListerCompossante extends React.Component {
             return (
                 <div>
                     <h2>Liste des composantes</h2>
-                    <p></p>
+                    <br />
+                    <div id="affichage_composante">
+                    </div>
                 </div>
                 )
     }
@@ -24,21 +26,24 @@ class ListerCompossante extends React.Component {
     componentDidMount  () {
         console.log("Lister des composantes")
         axios({
-            data: this.state.composante,
             method: "get",
             url: '/composantes/multi',
             headers: { 'Content-Type': 'application/json' },
         }).then(res => {
-            var composanteListe = [];
-            for (var i = 0; i < data.length; i++) {
-                var varcompo = data[i];
-                composanteListe.push(varcompo);
-            }
-            console.log(composanteListe);
-            this.setState({ composanteListe })
-            console.log(this.state.composanteListe);
+            this.setState({
+                composantes : res.data,
+            })
+            console.log(this.state.composantes)
 
+            let composante_a = "<ul>";
+            for (const composante of this.state.composantes) {
+                composante_a += "<li>"+composante.nomComposante+"</li>";
+              }
+              composante_a += "</ul>";
+              document.getElementById("affichage_composante").innerHTML = composante_a;
         })
             .catch(err=> console.log(err))
     }
 }
+
+export default ListerComposante
