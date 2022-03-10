@@ -5,8 +5,18 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import EnregistrerCours from './EnregistrerCours.js'
 import ListerCours from './ListerCours.js'
 import Accueil from './Accueil.js'
+
 import EnregistrerIntervenant from './EnregistrerIntervenant.js'
 import ListerIntervenant from './ListerIntervenant.js'
+import RechercheIntervenant from './RechercheIntervenant.js'
+import ModifierIntervenant from './ModifierIntervenant.js'
+import SupprimerIntervenant from './SupprimerIntervenant.js'
+
+import EnregistrerGestionnaire from './EnregistrerGestionnaire.js'
+import ListerGestionnaire from './ListerGestionnaire.js'
+import RechercheGestionnaire from './RechercheGestionnaire.js'
+import ModifierGestionnaire from './ModifierGestionnaire.js'
+import SupprimerGestionnaire from './SupprimerGestionnaire.js'
 
 class App extends React.Component {
 
@@ -22,8 +32,18 @@ class App extends React.Component {
             <Route exact path="/" element={<Accueil />} />
             <Route exact path="/EnregistrerCours" element={<EnregistrerCours />} />
             <Route exact path="/ListerCours" element={<ListerCours />} />
+
             <Route exact path="/EnregistrerIntervenant" element={<EnregistrerIntervenant/>} />
             <Route exact path="/ListerIntervenant" element={<ListerIntervenant/>} />
+            <Route exact path="/RechercheIntervenant" element={<RechercheIntervenant/>} />
+            <Route exact path="/ModifierIntervenant" element={<ModifierIntervenant/>}/>
+            <Route exact path="/SupprimerIntervenant" element={<SupprimerIntervenant/>}/>
+
+            <Route exact path="/EnregistrerGestionnaire" element={<EnregistrerGestionnaire/>} />
+            <Route exact path="/ListerGestionnaire" element={<ListerGestionnaire/>} />
+            <Route exact path="/RechercheGestionnaire" element={<RechercheGestionnaire/>} />
+            <Route exact path="/ModifierGestionnaire" element={<ModifierGestionnaire/>}/>
+            <Route exact path="/SupprimerGestionnaire" element={<SupprimerGestionnaire/>}/>
           </Routes>
         </Router>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-class EnregistrerIntervenant extends React.Component {
+class EnregistrerGestionnaire extends React.Component {
 
     constructor(props) {
         super(props)
@@ -15,7 +15,7 @@ class EnregistrerIntervenant extends React.Component {
     render() {
         return (
             <div>
-                <h2>Enregistrement d'un intervenant</h2>
+                <h2>Enregistrement d'un gestionnaire</h2>
                 <br />
                 <label>Login:</label>
                 <br />
@@ -51,7 +51,7 @@ class EnregistrerIntervenant extends React.Component {
         axios({
             data:this.state.utilisateur,
             method : "post",
-            url : '/intervenants',
+            url : '/gestionnaires',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
             // res.data est l'objet javascript envoyé par le serveur
@@ -72,4 +72,4 @@ class EnregistrerIntervenant extends React.Component {
 
     }
 }
-export default EnregistrerIntervenant
+export default EnregistrerGestionnaire

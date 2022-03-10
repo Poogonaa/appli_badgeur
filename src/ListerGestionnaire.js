@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 
-class ListerIntervenant extends React.Component {
+class ListerGestionnaire extends React.Component {
 
     constructor(props) {
         super(props)
@@ -14,7 +14,7 @@ class ListerIntervenant extends React.Component {
     render() {
         return (
             <div>
-                <h2>Liste des intervenant</h2>
+                <h2>Liste des gestionnaire</h2>
                 <table>
                     <thead>
                     <tr>
@@ -32,7 +32,7 @@ class ListerIntervenant extends React.Component {
     }
 
     componentDidMount(){
-        console.log("lister les intervenants")
+        console.log("lister les gestionnaires")
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {
@@ -41,7 +41,7 @@ class ListerIntervenant extends React.Component {
             });
             let utilisateur_a = "";
             for (const utilisateur of this.state.utilisateurs) {
-                if(utilisateur.dtype === "Intervenant"){
+                if(utilisateur.dtype === "Gestionnaire"){
                     utilisateur_a += "<tr>";
                     utilisateur_a += "<td>"+utilisateur.login+"</td>";
                     utilisateur_a += "<td>"+utilisateur.nom+"</td>";
@@ -55,4 +55,4 @@ class ListerIntervenant extends React.Component {
     }
 
 }
-export default ListerIntervenant
+export default ListerGestionnaire

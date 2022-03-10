@@ -1,22 +1,35 @@
 import React from 'react'
 import axios from 'axios'
 
-class EnregistrerIntervenant extends React.Component {
+class ModifierGestionnaire extends React.Component {
 
     constructor(props) {
         super(props)
         this.state={
             utilisateur : {},
         }
+        this.rechercher = this.rechercher.bind(this);
         this.enregistrer = this.enregistrer.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     render() {
         return (
             <div>
-                <h2>Enregistrement d'un intervenant</h2>
-                <br />
+                <h2>Rechercher un gestionnaire</h2>
+                <label>Login:</label>
+                <div>
+                    <br />
+                    <select name="uti_id" id="utilisateur" onChange={this.handleChange}>
+                            
+                    </select>
+                    <br />
+                    <br />
+                    <button className="btn btn-success start" onClick={this.rechercher} >Rechercher</button>
+                    <br />
+                    <br />
+                </div>
                 <label>Login:</label>
                 <br />
                 <input type="text" name="login" value={this.state.utilisateur.login} onChange={this.handleChange}/>
@@ -39,25 +52,52 @@ class EnregistrerIntervenant extends React.Component {
                 <br />
                 <br />
                 <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>
-                <div id="add_success">
-                </div>
             </div>
         )
     }
 
     enregistrer() {
         console.log("enregistrer")
-        console.log(this.state.utilisateur)
         axios({
             data:this.state.utilisateur,
-            method : "post",
-            url : '/intervenants',
+            method : "put",
+            url : '/utilisateurs',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
             // res.data est l'objet javascript envoyé par le serveur
             // JSON.stringify transforme cet objet en chaîne pour pouvoir l'afficher
             console.log(JSON.stringify(res.data))
-            document.getElementById("add_success").innerHTML = "<p>Ajout réussi!</p>";
+        })
+    }
+
+    rechercher(event){
+        console.log("afficher un intervenant")
+        console.log(this.state.utilisateur)
+        axios({
+            url : '/utilisateurs/'+this.state.utilisateur.uti_id,
+            method : "get",
+        }).then(res => {
+            this.setState({
+                utilisateur : res.data,
+            });
+        })
+    }
+
+    componentDidMount(){
+        console.log("lister les intervenants")
+        axios({url : '/utilisateurs/multi',
+               method : "get",
+        }).then(res => {
+            this.setState({
+                utilisateurs : res.data,
+            });
+            let utilisateur_a = '<option value="">Choisir un login</option>';
+            for (const utilisateur of this.state.utilisateurs) {
+                if(utilisateur.dtype === "Gestionnaire"){
+                    utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
+                }
+              }
+              document.getElementById("utilisateur").innerHTML = utilisateur_a;
         })
     }
 
@@ -69,7 +109,6 @@ class EnregistrerIntervenant extends React.Component {
                 [event.target.name]: event.target.value
             }
         });
-
     }
 }
-export default EnregistrerIntervenant
+export default ModifierGestionnaire
