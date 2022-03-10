@@ -39,6 +39,7 @@ class ListerIntervenant extends React.Component {
             this.setState({
                 utilisateurs : res.data,
             });
+
             let utilisateur_a = "";
             for (const utilisateur of this.state.utilisateurs) {
                 if(utilisateur.dtype === "Intervenant"){
