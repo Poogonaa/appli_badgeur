@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+import Accueil from './Accueil.js'
 
 import EnregistrerCours from './EnregistrerCours.js'
 import ListerCours from './ListerCours.js'
-import Accueil from './Accueil.js'
+
+import EnregistrerComposante from './EnregistrerComposante.js'
+import ListerComposante from './ListerComposante.js'
 
 import EnregistrerIntervenant from './EnregistrerIntervenant.js'
 import ListerIntervenant from './ListerIntervenant.js'
@@ -44,6 +47,10 @@ class App extends React.Component {
             <Route exact path="/RechercheGestionnaire" element={<RechercheGestionnaire/>} />
             <Route exact path="/ModifierGestionnaire" element={<ModifierGestionnaire/>}/>
             <Route exact path="/SupprimerGestionnaire" element={<SupprimerGestionnaire/>}/>
+
+            <Route exact path="/EnregistrerComposante" element={<EnregistrerComposante />} />
+            <Route exact path="/ListerComposante" element={<ListerComposante />} />
+
           </Routes>
         </Router>
       </div>
