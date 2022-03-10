@@ -24,6 +24,8 @@ import RechercheGestionnaire from './RechercheGestionnaire.js'
 import ModifierGestionnaire from './ModifierGestionnaire.js'
 import SupprimerGestionnaire from './SupprimerGestionnaire.js'
 
+import Connexion from './Connexion.js'
+
 class App extends React.Component {
 
   constructor(props) {
@@ -56,6 +58,8 @@ class App extends React.Component {
 
             <Route exact path="/EnregistrerComposante" element={<EnregistrerComposante />} />
             <Route exact path="/ListerComposante" element={<ListerComposante />} />
+
+            <Route exact path="/Connexion" element={<Connexion/>}/>
 
           </Routes>
         </Router>
