@@ -11,8 +11,13 @@ class Connexion extends React.Component {
                 login : "",
                 mdp : "",
             },
+            connecter : {
+                login : "",
+                mdp : "",
+            }
         };
         
+        this.componentDidMount = this.componentDidMount.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.connexion = this.connexion.bind(this);
     }
@@ -38,21 +43,29 @@ class Connexion extends React.Component {
         )   
     }
 
+    componentDidMount(){
+        if(sessionStorage.getItem("id") !== null){
+            document.location.href = "/";
+        }
+    }
+
     connexion(){
-        this.state.utilisateur.mdp = sha256(this.state.utilisateur.mdp+"7%Hv_Gwf&q%rX2cljOCC");
-        console.log(this.state.utilisateur.mdp)
+
+        this.state.connecter.login = this.state.utilisateur.login;
+        this.state.connecter.mdp = sha256(this.state.utilisateur.mdp+"7%Hv_Gwf&q%rX2cljOCC");
+
         axios({
-			data: this.state.utilisateur,
+			data: this.state.connecter,
             method: "post",
             url: '/utilisateurs/signin',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
             this.setState({
-                utilisateur: res.data
+                connecter: res.data
             });
-            if(this.state.utilisateur.uti_id !== undefined) {
-                sessionStorage.setItem("id", this.state.utilisateur.uti_id);
-                sessionStorage.setItem("dtype", this.state.utilisateur.dtype);
+            if(this.state.connecter.uti_id !== undefined) {
+                sessionStorage.setItem("id", this.state.connecter.uti_id);
+                sessionStorage.setItem("dtype", this.state.connecter.dtype);
                 document.location.href = "/";
             }
         }).catch(function (error) {
