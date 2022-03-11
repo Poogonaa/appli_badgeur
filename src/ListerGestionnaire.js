@@ -32,6 +32,9 @@ class ListerGestionnaire extends React.Component {
     }
 
     componentDidMount(){
+
+        
+
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {

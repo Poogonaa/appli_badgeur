@@ -10,6 +10,7 @@ class ModifierCours extends React.Component {
         }
         this.update = this.update.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     render() {

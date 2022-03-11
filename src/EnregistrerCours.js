@@ -10,6 +10,7 @@ class EnregistrerCours extends React.Component {
         }
         this.enregistrer = this.enregistrer.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     render() {

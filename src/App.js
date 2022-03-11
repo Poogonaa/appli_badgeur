@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Accueil from './Accueil.js'
 import Connexion from './Connexion.js'
-//import Deconnexion from './Deconnexion.js'
+import Deconnexion from './Deconnexion.js'
 
 import EnregistrerCours from './EnregistrerCours.js'
 import ListerCours from './ListerCours.js'
@@ -33,7 +33,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
   }
-  //<Route exact path="/Deconnexion" element={<Deconnxion/>}/>
+  
   render() {
     return (
       <div>
@@ -41,7 +41,7 @@ class App extends React.Component {
           <Routes>
             <Route exact path="/" element={<Accueil />} />
             <Route exact path="/Connexion" element={<Connexion/>}/>
-            
+            <Route exact path="/Deconnexion" element={<Deconnexion/>}/>
 
             <Route exact path="/EnregistrerCours" element={<EnregistrerCours />} />
             <Route exact path="/ListerCours" element={<ListerCours />} />
