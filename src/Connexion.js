@@ -30,12 +30,14 @@ class Connexion extends React.Component {
                 <input type="text" name="mdp" value={this.state.utilisateur.mdp} onChange={this.handleChange}/>
                 <br /><br/>
                 <button className="btn btn-success start" onClick={this.connexion} >Connexion</button>
+                <br/><br/>
+                <div id = "msg_error">
+                </div>
             </div>
         )   
     }
 
     connexion(){
-        console.log("tentative de connexion")
         axios({
 			data: this.state.utilisateur,
             method: "post",
@@ -45,14 +47,17 @@ class Connexion extends React.Component {
             this.setState({
                 utilisateur: res.data
             });
-            sessionStorage.setItem("id", this.state.utilisateur.uti_id);
-            sessionStorage.setItem("dtype", this.state.utilisateur.dtype);
-            document.location.href = "/";
-        })
+            if(this.state.utilisateur.uti_id !== undefined) {
+                sessionStorage.setItem("id", this.state.utilisateur.uti_id);
+                sessionStorage.setItem("dtype", this.state.utilisateur.dtype);
+                document.location.href = "/";
+            }
+        }).catch(function (error) {
+            document.getElementById("msg_error").innerHTML = "Login ou/et mot de passe incorrect."
+          })
     }
 
     handleChange(event){
-        // immutable data
         this.setState({
             utilisateur: {
                 ...this.state.utilisateur,

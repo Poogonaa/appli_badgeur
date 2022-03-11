@@ -29,6 +29,9 @@ class SupprimerComposante extends React.Component {
     }
 
     componentDidMount() {
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         console.log("Liste composantes")
         axios({
             url : '/composantes/multi',

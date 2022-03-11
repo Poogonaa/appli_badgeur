@@ -20,7 +20,7 @@ class Accueil extends React.Component {
     }
 
     componentDidMount(){
-        if(sessionStorage.getItem("id") !== undefined){
+        if(sessionStorage.getItem("id") !== null){
             axios({url : '/utilisateurs/'+sessionStorage.getItem("id"),
                method : "get",
             }).then(res => {
@@ -36,6 +36,9 @@ class Accueil extends React.Component {
                 utilisateur_a += "</tr></tbody></table>";
                 document.getElementById("utilisateur").innerHTML = utilisateur_a;
             })
+        }
+        else{
+            document.getElementById("utilisateur").innerHTML = "Vous n'êtes pas connecter.";
         }
     }
 }

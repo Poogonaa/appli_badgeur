@@ -63,6 +63,9 @@ class ModifierComposante extends React.Component {
     }
 
     componentDidMount(){
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         console.log("lister les composantes")
         axios({url:'/composantes/multi',
         method : "get",

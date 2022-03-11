@@ -7,8 +7,8 @@ class ListerComposante extends React.Component {
         super(props)
         this.state = {
             composantes: {},
-        }
-      
+        };
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
    render() {
@@ -24,6 +24,9 @@ class ListerComposante extends React.Component {
    
 
     componentDidMount  () {
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         axios({
             method: "get",
             url: '/composantes/multi',
