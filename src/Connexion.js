@@ -50,7 +50,6 @@ class Connexion extends React.Component {
     }
 
     connexion(){
-
         this.state.connecter.login = this.state.utilisateur.login;
         this.state.connecter.mdp = sha256(this.state.utilisateur.mdp+"7%Hv_Gwf&q%rX2cljOCC");
 
