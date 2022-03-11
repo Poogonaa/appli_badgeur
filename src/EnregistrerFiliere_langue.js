@@ -20,11 +20,11 @@ class EnregistrerFiliere_langue extends React.Component {
                 <br />
                 <label>Code:</label>
                 <br />
-                <input type="text" name="code" value={this.state.filiere_langue.code} onChange={this.handleChange}/>
+                <input id="code" type="text" name="code" value={this.state.filiere_langue.code} placeholder="code filiere" onChange={this.handleChange}/>
                 <br /><br />
                 <label>Nom:</label>
                 <br />
-                <input type="text" name="nom" value={this.state.filiere_langue.nom} onChange={this.handleChange}/>
+                <input id="nom" type="text" name="nom" value={this.state.filiere_langue.nom} placeholder="nom filiere" onChange={this.handleChange}/>
                 <br /><br />
                 <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>
                 <br />
@@ -47,7 +47,17 @@ class EnregistrerFiliere_langue extends React.Component {
             url : '/filiere_langues',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            document.getElementById("add_success").innerHTML = "<p>Ajout réussi!</p>";
+            if(document.getElementById("code").value ==="" ) {
+                alert("Veuillez renseigner le code de la composante!");
+                return false;
+            }
+            if(document.getElementById("nom").value ==="" ) {
+                alert("Veuillez renseigner le nom de la composante!");
+                return false;
+            }
+            alert("Ajout réussi!") ;
+            document.getElementById("code").value = "";
+            document.getElementById("nom").value = "";
         })
     }
 

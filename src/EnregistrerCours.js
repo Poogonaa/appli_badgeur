@@ -20,7 +20,7 @@ class EnregistrerCours extends React.Component {
                 <br />
                 <label>Nom:</label>
                 <br />
-                <input type="text" name="intitule" value={this.state.cours.intitule} onChange={this.handleChange}/>
+                <input id="intitule" type="text" name="intitule" value={this.state.cours.intitule} placeholder="nom du cours" onChange={this.handleChange}/>
                 <br /><br />
                 <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>
                 <br />
@@ -44,7 +44,12 @@ class EnregistrerCours extends React.Component {
             url : '/cours',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            document.getElementById("add_success").innerHTML = "<p>Ajout réussi!</p>";
+            if(document.getElementById("intitule").value ==="" ) {
+                alert("Veuillez renseigner un nom pour le cours!");
+                return false;
+            }
+            alert("Ajout réussi!");
+            document.getElementById("intitule").value="";
         })
     }
 
