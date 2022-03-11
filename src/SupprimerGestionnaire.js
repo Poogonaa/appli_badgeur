@@ -9,7 +9,7 @@ class SupprimerGestionnaire extends React.Component {
             utilisateur : {},
             utilisateurs : {},
         }
-        this.rechercher = this.rechercher.bind(this);
+        this.supprimer = this.supprimer.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
     }
@@ -25,10 +25,7 @@ class SupprimerGestionnaire extends React.Component {
                 </select>
                 <br />
                 <br />
-                <button className="btn btn-success start" onClick={this.rechercher} >Supprimer</button>
-                <br />
-                <div id = "delete_success">
-                </div>
+                <button className="btn btn-success start" onClick={this.supprimer} >Supprimer</button>
             </div>
         )   
     }
@@ -45,7 +42,8 @@ class SupprimerGestionnaire extends React.Component {
             });
             let utilisateur_a = '<option value="">Choisir un login</option>';
             for (const utilisateur of this.state.utilisateurs) {
-                if(utilisateur.dtype === "Gestionnaire"){
+                if(utilisateur.dtype === "Gestionnaire" && utilisateur.uti_id.toString() !== sessionStorage.getItem("id")){
+                    
                     utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
                 }
               }
@@ -53,7 +51,7 @@ class SupprimerGestionnaire extends React.Component {
         })
     }
 
-    rechercher(){
+    supprimer(){
         axios({
             url : '/utilisateurs/'+this.state.utilisateur.uti_id,
             method : "delete",
@@ -61,7 +59,8 @@ class SupprimerGestionnaire extends React.Component {
             this.setState({
                 utilisateur : res.data,
             });
-            document.getElementById("delete_success").innerHTML = "Gestionnaire supprimer";
+            alert("Gestionnaire supprimé");
+            this.componentDidMount();
         })
     }
 

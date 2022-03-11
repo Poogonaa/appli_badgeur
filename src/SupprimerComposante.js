@@ -8,7 +8,7 @@ class SupprimerComposante extends React.Component {
             composante : {}
         }
         this.handleChange = this.handleChange.bind(this);
-        this.rechercher = this.rechercher.bind(this);
+        this.supprimer = this.supprimer.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         
     }
@@ -16,14 +16,12 @@ class SupprimerComposante extends React.Component {
     render() {
         return (
             <div>
-                <h2>Supprimer composante </h2>
-                <label>Nom composante</label>
-                <br/> <br/>
+                <h2>Supprimer une composante </h2>
+                <label>Nom</label>
+                <br/>
                 <select name="com_id" id="composante_r" onChange={this.handleChange}></select>
                 <br/> <br/>
-                <button className="btn btn-success start" onClick={this.rechercher}>Supprimer </button>
-                <br/>
-                <div id = "delete_success"></div>
+                <button className="btn btn-success start" onClick={this.supprimer}>Supprimer </button>
             </div>
         )
     }
@@ -32,7 +30,6 @@ class SupprimerComposante extends React.Component {
         if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
-        console.log("Liste composantes")
         axios({
             url : '/composantes/multi',
             method : 'get',
@@ -49,8 +46,7 @@ class SupprimerComposante extends React.Component {
         })
     }
 
-    rechercher(){
-        console.log("Delete composante")
+    supprimer(){
         console.log(this.state.composante)
         axios({
             url: '/composantes/'+this.state.composante.com_id,
@@ -59,8 +55,8 @@ class SupprimerComposante extends React.Component {
             this.setState({
                 composante : res.data,
             });
-            document.getElementById("delete_success").innerHTML = "Composante supprimée";
-
+            alert("Composante supprimée");
+            this.componentDidMount();
         })
     }
 

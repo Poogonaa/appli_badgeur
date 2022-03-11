@@ -9,7 +9,7 @@ class SupprimerIntervenant extends React.Component {
             utilisateur : {},
             utilisateurs : {},
         }
-        this.rechercher = this.rechercher.bind(this);
+        this.supprimer = this.supprimer.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
     }
@@ -25,10 +25,7 @@ class SupprimerIntervenant extends React.Component {
                 </select>
                 <br />
                 <br />
-                <button className="btn btn-success start" onClick={this.rechercher} >Supprimer</button>
-                <br />
-                <div id = "delete_success">
-                </div>
+                <button className="btn btn-success start" onClick={this.supprimer} >Supprimer</button>
             </div>
         )   
     }
@@ -53,7 +50,7 @@ class SupprimerIntervenant extends React.Component {
         })
     }
 
-    rechercher(){
+    supprimer(){
         axios({
             url : '/utilisateurs/'+this.state.utilisateur.uti_id,
             method : "delete",
@@ -61,7 +58,8 @@ class SupprimerIntervenant extends React.Component {
             this.setState({
                 utilisateur : res.data,
             });
-            document.getElementById("delete_success").innerHTML = "Intevenant supprimer";
+            alert("Intevenant supprimé");
+            this.componentDidMount();
         })
     }
 

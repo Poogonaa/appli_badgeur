@@ -45,7 +45,7 @@ class ModifierComposante extends React.Component {
             url : '/composantes',
             headers : {'Content-Type': 'application/json'},
         }).then(res => {
-            console.log(JSON.stringify(res.data))
+            alert("Composante modifiée");
         })
     }
 
@@ -79,8 +79,6 @@ class ModifierComposante extends React.Component {
             composante_a += '<option value="'+composante.com_id+'">'+composante.nomComposante +'</option>';
         }
         document.getElementById("composante").innerHTML = composante_a;
-        
-
     })
     }
 

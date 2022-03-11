@@ -49,9 +49,6 @@ class ModifierIntervenant extends React.Component {
                 <br />
                 <br />
                 <button className="btn btn-success start" onClick={this.modifier} >Modifier</button>
-                <br />
-                <div id="edit_success">
-                </div>
             </div>
         )
     }
@@ -66,7 +63,7 @@ class ModifierIntervenant extends React.Component {
             url : '/utilisateurs',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            document.getElementById("edit_success").innerHTML = "<p>Modification réussi!</p>";
+            alert("Intervenant modifié");
         })
     }
 

@@ -42,9 +42,7 @@ class ModifierCours extends React.Component {
             url : '/cours',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            // res.data est l'objet javascript envoyé par le serveur
-            // JSON.stringify transforme cet objet en chaîne pour pouvoir l'afficher
-            console.log(JSON.stringify(res.data))
+            alert("Cours modifié");
         })
     }
 

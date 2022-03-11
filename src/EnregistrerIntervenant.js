@@ -8,6 +8,13 @@ class EnregistrerIntervenant extends React.Component {
         super(props)
         this.state={
             utilisateur : {},
+            aEnregistrer : {
+                login : "",
+                mdp : "",
+                nom : "",
+                prenom : "",
+                mail : ""
+            },
         }
         this.componentDidMount = this.componentDidMount.bind(this);
         this.enregistrer = this.enregistrer.bind(this);
@@ -55,9 +62,13 @@ class EnregistrerIntervenant extends React.Component {
     }
 
     enregistrer() {
-        this.state.utilisateur.mdp = sha256(this.state.utilisateur.mdp+"7%Hv_Gwf&q%rX2cljOCC");
+        this.state.aEnregistrer.login = this.state.utilisateur.login;
+        this.state.aEnregistrer.mdp = sha256(this.state.utilisateur.mdp+"7%Hv_Gwf&q%rX2cljOCC");
+        this.state.aEnregistrer.nom = this.state.utilisateur.nom;
+        this.state.aEnregistrer.prenom = this.state.utilisateur.prenom;
+        this.state.aEnregistrer.mail = this.state.utilisateur.mail;
         axios({
-            data:this.state.utilisateur,
+            data:this.state.aEnregistrer,
             method : "post",
             url : '/intervenants',
             headers: { 'Content-Type': 'application/json'},

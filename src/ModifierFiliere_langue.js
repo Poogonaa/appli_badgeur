@@ -40,9 +40,6 @@ class ModifierFiliere_langue extends React.Component {
                 <input type="text" name="nom" value={this.state.filiere_langue.nom} onChange={this.handleChange}/>
                 <br /><br />
                 <button className="btn btn-success start" onClick={this.modifier} >Modifier</button>
-                <br />
-                <div id="edit_success">
-                </div>
             </div>
         )
     }
@@ -54,7 +51,7 @@ class ModifierFiliere_langue extends React.Component {
             url : '/filiere_langues',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            document.getElementById("edit_success").innerHTML = "<p>Modification réussi!</p>";
+            alert("Filière langue modifiée");
         })
     }
 

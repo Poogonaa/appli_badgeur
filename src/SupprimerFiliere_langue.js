@@ -9,7 +9,7 @@ class SupprimerFiliere_langue extends React.Component {
             filiere_langue : {},
             filiere_langues : {},
         }
-        this.rechercher = this.rechercher.bind(this);
+        this.supprimer = this.supprimer.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
     }
@@ -18,17 +18,14 @@ class SupprimerFiliere_langue extends React.Component {
         return (
             <div>
                 <h2>Supprimer un gestionnaire</h2>
-                <label>Login:</label>
+                <label>Nom:</label>
                 <br />
                 <select name="fil_id" id="filiere_langue_recherche" onChange={this.handleChange}>
                             
                 </select>
                 <br />
                 <br />
-                <button className="btn btn-success start" onClick={this.rechercher} >Supprimer</button>
-                <br />
-                <div id = "delete_success">
-                </div>
+                <button className="btn btn-success start" onClick={this.supprimer} >Supprimer</button>
             </div>
         )   
     }
@@ -51,12 +48,13 @@ class SupprimerFiliere_langue extends React.Component {
         })
     }
 
-    rechercher(){
+    supprimer(){
         axios({
             url : '/filiere_langues/'+this.state.filiere_langue.fil_id,
             method : "delete",
         }).then(res => {
-            document.getElementById("delete_success").innerHTML = "Filière langue supprimer";
+            alert("Filière langue supprimée");
+            this.componentDidMount();
         })
     }
 

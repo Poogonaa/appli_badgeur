@@ -9,36 +9,49 @@ class SupprimerCours extends React.Component {
             cours : {},
         }
         this.handleChange = this.handleChange.bind(this);
-        this.delete = this.delete.bind(this);
+        this.supprimer = this.supprimer.bind(this);
     }
 
     render() {
-        console.log("[render] : donnée cours :" + JSON.stringify(this.state.cours))
         return (
             <div>
+                <h2>Supprimer un cours</h2>
+                <label>Intitule:</label>
                 <br />
-                <input type="text" name="cou_id" value={this.state.cours.cou_id} onChange={this.handleChange}/>
-                <br />
-                <button className="btn btn-success start" onClick={this.delete} >Supprimer</button>
-                <br/>
+                <select name="cou_id" id="cours_recherche" onChange={this.handleChange}>
+                            
+                </select>
+                <br /><br/>
+                <button className="btn btn-success start" onClick={this.supprimer} >Supprimer</button>
             </div>
         )   
     }
 
     componentDidMount(){
-
-        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
+        axios({url : '/cours/multi',
+               method : "get",
+        }).then(res => {
+            this.setState({
+                cours : res.data,
+            });
+            let cours_a = '<option value="">Choisir un intitule</option>';
+            for (const un_cours of this.state.cours) {
+                cours_a += '<option value="'+un_cours.cou_id+'">'+un_cours.intitule+'</option>';
+              }
+              document.getElementById("cours_recherche").innerHTML = cours_a;
+        })
     }
 
-    delete(){
-        console.log("supprimer un cours")
+    supprimer(){
         axios({
             method: "delete",
             url: '/cours/'+this.state.cours.cou_id,
         }).then(res => {
-            console.log("le cours supprimé est " + res.data);
+            alert("Cours supprimé");
+            this.componentDidMount();
         })
     }
 

@@ -13,7 +13,7 @@ import ModifierCours from './ModifierCours.js'
 
 import EnregistrerComposante from './EnregistrerComposante.js'
 import ListerComposante from './ListerComposante.js'
-import RechercherComposante from './RechercherComposante.js'
+import RechercherComposante from './RechercheComposante.js'
 import ModifierComposante from './ModifierComposante.js'
 import SupprimerComposante from './SupprimerComposante.js'
 
@@ -31,7 +31,7 @@ import SupprimerGestionnaire from './SupprimerGestionnaire.js'
 
 import EnregistrerFiliere_langue from './EnregistrerFiliere_langue.js'
 import ListerFiliere_langue from './ListerFiliere_langue.js'
-import RechercheFiliere_langue from './RechercheFiliere_langue.js'
+import RechercherFiliere_langue from './RechercherFiliere_langue.js'
 import ModifierFiliere_langue from './ModifierFiliere_langue.js'
 import SupprimerFiliere_langue from './SupprimerFiliere_langue.js'
 
@@ -72,7 +72,7 @@ class App extends React.Component {
 
             <Route exact path="/EnregistrerFiliere_langue" element={<EnregistrerFiliere_langue />} />
             <Route exact path="/ListerFiliere_langue" element={<ListerFiliere_langue />} />
-            <Route exact path="/RechercheFiliere_langue" element={<RechercheFiliere_langue />} />
+            <Route exact path="/RechercherFiliere_langue" element={<RechercherFiliere_langue />} />
             <Route exact path="/ModifierFiliere_langue" element={<ModifierFiliere_langue />} />
             <Route exact path="/SupprimerFiliere_langue" element={<SupprimerFiliere_langue />} />
           </Routes>
