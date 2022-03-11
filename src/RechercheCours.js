@@ -13,7 +13,6 @@ class RechercherCours extends React.Component {
     }
 
     render() {
-        console.log("[render] : donnée cours :" + JSON.stringify(this.state.cours))
         return (
             <div>
                 <br />
@@ -27,23 +26,18 @@ class RechercherCours extends React.Component {
     }
 
     rechercher(){
-        console.log("selectionner un cours")
         axios({
             method: "get",
             url: '/cours/'+this.state.cours.cou_id,
         }).then(res => {
-            console.log("le titre du cours est " + res.data);
             this.setState({
                 cours: res.data
             });
-            console.log("le titre du cours est " + this.state.cours.intitule);
-           
             document.getElementById("cours").innerHTML = this.state.cours.intitule;
         })
     }
 
     handleChange(event){
-        // immutable data
         this.setState({
             cours: {
                 ...this.state.cours,

@@ -1,12 +1,13 @@
 import axios from 'axios'
 import React from 'react'
 
-class ListerIntervenant extends React.Component {
+class RechercherIntervenant extends React.Component {
 
     constructor(props) {
         super(props)
         this.state={
             utilisateur : {},
+            utilisateurs : {},
         }
         this.rechercher = this.rechercher.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -43,7 +44,6 @@ class ListerIntervenant extends React.Component {
     }
 
     componentDidMount(){
-        console.log("lister les intervenants")
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {
@@ -61,8 +61,6 @@ class ListerIntervenant extends React.Component {
     }
 
     rechercher(){
-        console.log("afficher un intervenant")
-        console.log(this.state.utilisateur)
         axios({
             url : '/utilisateurs/'+this.state.utilisateur.uti_id,
             method : "get",
@@ -93,4 +91,4 @@ class ListerIntervenant extends React.Component {
     }
 
 }
-export default ListerIntervenant
+export default RechercherIntervenant

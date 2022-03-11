@@ -32,7 +32,6 @@ class ListerIntervenant extends React.Component {
     }
 
     componentDidMount(){
-        console.log("lister les intervenants")
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {

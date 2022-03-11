@@ -1,13 +1,13 @@
 import axios from 'axios'
 import React from 'react'
 
-class SupprimerGestionnaire extends React.Component {
+class SupprimerFiliere_langue extends React.Component {
 
     constructor(props) {
         super(props)
         this.state={
-            utilisateur : {},
-            utilisateurs : {},
+            filiere_langue : {},
+            filiere_langues : {},
         }
         this.rechercher = this.rechercher.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -20,7 +20,7 @@ class SupprimerGestionnaire extends React.Component {
                 <h2>Supprimer un gestionnaire</h2>
                 <label>Login:</label>
                 <br />
-                <select name="uti_id" id="utilisateur_recherche" onChange={this.handleChange}>
+                <select name="fil_id" id="filiere_langue_recherche" onChange={this.handleChange}>
                             
                 </select>
                 <br />
@@ -34,38 +34,33 @@ class SupprimerGestionnaire extends React.Component {
     }
 
     componentDidMount(){
-        axios({url : '/utilisateurs/multi',
+        axios({url : '/filiere_langues/multi',
                method : "get",
         }).then(res => {
             this.setState({
-                utilisateurs : res.data,
+                filiere_langues : res.data,
             });
-            let utilisateur_a = '<option value="">Choisir un login</option>';
-            for (const utilisateur of this.state.utilisateurs) {
-                if(utilisateur.dtype === "Gestionnaire"){
-                    utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
-                }
+            let filiere_langue_a = '<option value="">Choisir un nom</option>';
+            for (const filiere_langue of this.state.filiere_langues) {
+                filiere_langue_a += '<option value="'+filiere_langue.fil_id+'">'+filiere_langue.nom+'</option>';
               }
-              document.getElementById("utilisateur_recherche").innerHTML = utilisateur_a;
+              document.getElementById("filiere_langue_recherche").innerHTML = filiere_langue_a;
         })
     }
 
     rechercher(){
         axios({
-            url : '/utilisateurs/'+this.state.utilisateur.uti_id,
+            url : '/filiere_langues/'+this.state.filiere_langue.fil_id,
             method : "delete",
         }).then(res => {
-            this.setState({
-                utilisateur : res.data,
-            });
-            document.getElementById("delete_success").innerHTML = "Gestionnaire supprimer";
+            document.getElementById("delete_success").innerHTML = "Filière langue supprimer";
         })
     }
 
     handleChange(event){
         this.setState({
-            utilisateur: {
-                ...this.state.utilisateur,
+            filiere_langue: {
+                ...this.state.filiere_langue,
                 [event.target.name]: event.target.value
             }
         });
@@ -73,4 +68,4 @@ class SupprimerGestionnaire extends React.Component {
     }
 
 }
-export default SupprimerGestionnaire
+export default SupprimerFiliere_langue

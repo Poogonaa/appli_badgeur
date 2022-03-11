@@ -32,7 +32,6 @@ class ListerGestionnaire extends React.Component {
     }
 
     componentDidMount(){
-        console.log("lister les gestionnaires")
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {
