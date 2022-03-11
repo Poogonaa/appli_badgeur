@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Accueil from './Accueil.js'
@@ -26,13 +26,7 @@ import SupprimerGestionnaire from './SupprimerGestionnaire.js'
 import EnregistrerComposante from './EnregistrerComposante.js'
 import ListerComposante from './ListerComposante.js'
 
-
-
 class App extends React.Component {
-
-  constructor(props) {
-    super(props)
-  }
   
   render() {
     return (

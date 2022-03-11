@@ -6,8 +6,11 @@ class Connexion extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            utilisateur : {}
-        },
+            utilisateur : {
+                login : "",
+                mdp : "",
+            },
+        };
         
         this.handleChange = this.handleChange.bind(this);
         this.connexion = this.connexion.bind(this);
@@ -16,11 +19,16 @@ class Connexion extends React.Component {
     render() {
         return (
             <div>
+                <h2>Connexion</h2>
+                <br />
+                <label>Login:</label>
                 <br />
                 <input type="text" name="login" value={this.state.utilisateur.login} onChange={this.handleChange}/>
+                <br /><br/>
+                <label>Mot de passe:</label>
                 <br />
                 <input type="text" name="mdp" value={this.state.utilisateur.mdp} onChange={this.handleChange}/>
-                <br />
+                <br /><br/>
                 <button className="btn btn-success start" onClick={this.connexion} >Connexion</button>
             </div>
         )   
@@ -39,6 +47,7 @@ class Connexion extends React.Component {
             });
             sessionStorage.setItem("id", this.state.utilisateur.uti_id);
             sessionStorage.setItem("dtype", this.state.utilisateur.dtype);
+            document.location.href = "/";
         })
     }
 

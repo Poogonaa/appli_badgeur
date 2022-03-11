@@ -37,7 +37,7 @@ class RechercherIntervenant extends React.Component {
                     </tr>
                     </thead>
                     <tbody id = "utilisateur">
-                    </tbody>                   
+                    </tbody>
                 </table>
             </div>
         )   
