@@ -17,14 +17,15 @@ class EnregistrerComposante extends React.Component {
 			<div>
 				<h2> Enregistrement d'une composante </h2>
 				<br />
+				<label>Nom:</label>
+                <br />
 				<input type="text" name="nomComposante" value={this.state.composante.nomComposante} onChange={this.handleChange} />
-				<br />
+				<br /><br />
 				<button className="btn btn-success start" onClick={this.enregistrer}> Enregistrer</button>
 				<br />
                 <div id="add_success">
                 </div>
 			</div>
-
 			)
 	}
 

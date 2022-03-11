@@ -32,6 +32,9 @@ class ListerIntervenant extends React.Component {
     }
 
     componentDidMount(){
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {

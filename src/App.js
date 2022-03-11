@@ -6,8 +6,8 @@ import Accueil from './Accueil.js'
 import EnregistrerCours from './EnregistrerCours.js'
 import ListerCours from './ListerCours.js'
 import RechercheCours from './RechercheCours.js'
-import DeleteCours from './DeleteCours.js'
-import UpdateCours from './UpdateCours.js'
+import SupprimerCours from './SupprimerCours.js'
+import ModifierCours from './ModifierCours.js'
 
 import EnregistrerComposante from './EnregistrerComposante.js'
 import ListerComposante from './ListerComposante.js'
@@ -47,8 +47,8 @@ class App extends React.Component {
             <Route exact path="/EnregistrerCours" element={<EnregistrerCours />} />
             <Route exact path="/ListerCours" element={<ListerCours />} />
             <Route exact path="/RechercheCours" element={<RechercheCours />}/>
-            <Route exact path="/DeleteCours" element={<DeleteCours />}/>
-            <Route exact path="UpdateCours" element={<UpdateCours/>}/>
+            <Route exact path="ModifierCours" element={<ModifierCours/>}/>
+            <Route exact path="/SupprimerCours" element={<SupprimerCours />}/>
 
             <Route exact path="/EnregistrerIntervenant" element={<EnregistrerIntervenant/>} />
             <Route exact path="/ListerIntervenant" element={<ListerIntervenant/>} />

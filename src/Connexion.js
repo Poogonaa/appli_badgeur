@@ -7,8 +7,8 @@ class Connexion extends React.Component {
         super(props)
         this.state={
             utilisateur : {
-                "login":"Hamish", 
-                "mdp":"lefol"
+                "login":"Pogo", 
+                "mdp":"pogo123"
         },
         }
         this.handleChange = this.handleChange.bind(this);
@@ -39,8 +39,8 @@ class Connexion extends React.Component {
             this.setState({
                 utilisateur: res.data
             });
-           console.log(JSON.stringify(this.state.utilisateur));
-           console.log(this.state.utilisateur);
+            sessionStorage.setItem("id", this.state.utilisateur.uti_id);
+            sessionStorage.setItem("dtype", this.state.utilisateur.dtype);
         })
     }
 

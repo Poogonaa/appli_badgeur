@@ -61,6 +61,9 @@ class ModifierIntervenant extends React.Component {
     }
 
     modifier() {
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         axios({
             data:this.state.utilisateur,
             method : "put",

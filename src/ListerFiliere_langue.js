@@ -30,6 +30,9 @@ class ListerFiliere_langue extends React.Component {
     }
 
     componentDidMount(){
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         axios({url : '/filiere_langues/multi',
                method : "get",
         }).then(res => {

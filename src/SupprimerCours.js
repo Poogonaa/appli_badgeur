@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 
-class DeleteCours extends React.Component {
+class SupprimerCours extends React.Component {
 
     constructor(props) {
         super(props)
@@ -48,4 +48,4 @@ class DeleteCours extends React.Component {
 
 
 }
-export default DeleteCours
+export default SupprimerCours

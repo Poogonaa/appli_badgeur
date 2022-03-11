@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-class UpdateCours extends React.Component {
+class ModifierCours extends React.Component {
 
     constructor(props) {
         super(props)
@@ -50,4 +50,4 @@ class UpdateCours extends React.Component {
 
     }
 }
-export default UpdateCours
+export default ModifierCours

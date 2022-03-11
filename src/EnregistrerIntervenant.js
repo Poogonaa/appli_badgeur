@@ -8,6 +8,7 @@ class EnregistrerIntervenant extends React.Component {
         this.state={
             utilisateur : {},
         }
+        this.componentDidMount = this.componentDidMount.bind(this);
         this.enregistrer = this.enregistrer.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -44,6 +45,12 @@ class EnregistrerIntervenant extends React.Component {
                 </div>
             </div>
         )
+    }
+
+    componentDidMount(){
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
     }
 
     enregistrer() {
