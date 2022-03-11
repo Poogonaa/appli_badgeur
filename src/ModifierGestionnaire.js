@@ -35,10 +35,6 @@ class ModifierGestionnaire extends React.Component {
                 <br />
                 <input type="text" name="login" value={this.state.utilisateur.login} onChange={this.handleChange}/>
                 <br /><br />
-                <label>Mot de passe:</label>
-                <br />
-                <input type="text" name="mdp" value={this.state.utilisateur.mdp} onChange={this.handleChange}/>
-                <br /><br />
                 <label>Nom:</label>
                 <br />
                 <input type="text" name="nom" value={this.state.utilisateur.nom} onChange={this.handleChange}/>

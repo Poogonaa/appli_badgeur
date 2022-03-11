@@ -1,5 +1,6 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+import { sha256 } from 'js-sha256';
 
 class EnregistrerIntervenant extends React.Component {
 
@@ -54,6 +55,7 @@ class EnregistrerIntervenant extends React.Component {
     }
 
     enregistrer() {
+        this.state.utilisateur.mdp = sha256(this.state.utilisateur.mdp+"7%Hv_Gwf&q%rX2cljOCC");
         axios({
             data:this.state.utilisateur,
             method : "post",

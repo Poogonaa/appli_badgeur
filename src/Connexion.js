@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import { sha256 } from 'js-sha256';
 
 class Connexion extends React.Component {
 
@@ -27,7 +28,7 @@ class Connexion extends React.Component {
                 <br /><br/>
                 <label>Mot de passe:</label>
                 <br />
-                <input type="text" name="mdp" value={this.state.utilisateur.mdp} onChange={this.handleChange}/>
+                <input type="password" name="mdp" value={this.state.utilisateur.mdp} onChange={this.handleChange}/>
                 <br /><br/>
                 <button className="btn btn-success start" onClick={this.connexion} >Connexion</button>
                 <br/><br/>
@@ -38,6 +39,7 @@ class Connexion extends React.Component {
     }
 
     connexion(){
+        this.state.utilisateur.mdp = sha256(this.state.utilisateur.mdp+"7%Hv_Gwf&q%rX2cljOCC");
         axios({
 			data: this.state.utilisateur,
             method: "post",

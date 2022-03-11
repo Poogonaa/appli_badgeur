@@ -70,7 +70,7 @@ class RechercherComposante extends React.Component {
             composante_a += "<tr>";
             composante_a += "<td>"+this.state.composante.nomComposante+"</td>";
             composante_a += "</tr>";
-            document.getElementById("composante").innerHTML = this.state.composante.nomComposante;
+            document.getElementById("composante").innerHTML = composante_a;
 
         })
     }
