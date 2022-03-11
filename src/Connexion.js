@@ -9,8 +9,9 @@ class Connexion extends React.Component {
             utilisateur : {
                 "login":"Hamish", 
                 "mdp":"lefol"
-        },
+            },
         }
+        
         this.handleChange = this.handleChange.bind(this);
         this.connexion = this.connexion.bind(this);
     }
@@ -39,8 +40,9 @@ class Connexion extends React.Component {
             this.setState({
                 utilisateur: res.data
             });
-           console.log(JSON.stringify(this.state.utilisateur));
-           console.log(this.state.utilisateur);
+            sessionStorage.setItem("id", this.state.utilisateur.uti_id);
+            sessionStorage.setItem("dtype", this.state.utilisateur.dtype);
+            
         })
     }
 

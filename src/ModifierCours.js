@@ -1,28 +1,27 @@
 import React from 'react'
 import axios from 'axios'
 
-class EnregistrerCours extends React.Component {
+class ModifierCours extends React.Component {
 
     constructor(props) {
         super(props)
         this.state={
             cours : {},
         }
-        this.enregistrer = this.enregistrer.bind(this);
+        this.update = this.update.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     render() {
         return (
             <div>
-                <h2>Enregistrement d'un cours</h2>
+                <h2>Modification d'un cours</h2>
                 <br />
-                <input type="text" name="intitule" value={this.state.cours.intitule} onChange={this.handleChange}/>
+                <p>id</p><input type="text" name="cou_id" value={this.state.cours.cou_id} onChange={this.handleChange}/>
                 <br />
-                <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>
+                <p>Intitule</p><input type="text" name="intitule" value={this.state.cours.intitule} onChange={this.handleChange}/>
                 <br />
-                <div id="add_success">
-                </div>
+                <button className="btn btn-success start" onClick={this.update} >Modifier</button>
             </div>
         )
     }
@@ -34,18 +33,22 @@ class EnregistrerCours extends React.Component {
         }
     }
 
-    enregistrer() {
+    update() {
+        console.log("enregistrer")
         axios({
             data:this.state.cours,
-            method : "post",
+            method : "put",
             url : '/cours',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            document.getElementById("add_success").innerHTML = "<p>Ajout réussi!</p>";
+            // res.data est l'objet javascript envoyé par le serveur
+            // JSON.stringify transforme cet objet en chaîne pour pouvoir l'afficher
+            console.log(JSON.stringify(res.data))
         })
     }
 
     handleChange(event){
+        // immutable data
         this.setState({
             cours: {
                 ...this.state.cours,
@@ -55,4 +58,4 @@ class EnregistrerCours extends React.Component {
 
     }
 }
-export default EnregistrerCours
+export default ModifierCours
