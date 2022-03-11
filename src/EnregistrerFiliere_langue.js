@@ -48,11 +48,11 @@ class EnregistrerFiliere_langue extends React.Component {
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
             if(document.getElementById("code").value ==="" ) {
-                alert("Veuillez renseigner le code de la composante!");
+                alert("Veuillez renseigner le code de la filière!");
                 return false;
             }
             if(document.getElementById("nom").value ==="" ) {
-                alert("Veuillez renseigner le nom de la composante!");
+                alert("Veuillez renseigner le nom de la filière!");
                 return false;
             }
             alert("Ajout réussi!") ;
