@@ -16,11 +16,13 @@ class EnregistrerComposante extends React.Component {
 	render() {
 		return (
 			<div>
-				<h2> Enregistrement d'une composante </h2>
+				<h2> Enregistrement d'une composante! </h2>
 				<br />
-				<label>Nom:</label>
+				<h5>Veuillez rentrer le nom de la composante que vous voulez enregistrer.</h5>
+				<br></br>
+				<label>Nom de la composante:</label>
                 <br />
-				<input type="text" name="nomComposante" value={this.state.composante.nomComposante} onChange={this.handleChange} />
+				<input id="leNom" type="text" name="nomComposante" value={this.state.composante.nomComposante} placeholder="nom" onChange={this.handleChange} />
 				<br /><br />
 				<button className="btn btn-success start" onClick={this.enregistrer}> Enregistrer</button>
 				<br />
@@ -43,7 +45,12 @@ class EnregistrerComposante extends React.Component {
 			url: '/composantes',
 			headers: { 'Content-Type': 'application/json' },
 		}).then(res => {
-			document.getElementById("add_success").innerHTML = "<p>Ajout réussi!</p>";
+			if(document.getElementById("leNom").value ==="" ) {
+                alert("Veuillez renseigner un nom pour la composante!");
+                return false;
+            }
+            alert("Ajout réussi!");
+            document.getElementById("leNom").value="";
 		})
 	}
 

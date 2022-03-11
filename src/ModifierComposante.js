@@ -78,7 +78,8 @@ class ModifierComposante extends React.Component {
         for(const composante of this.state.composantes){
             composante_a += '<option value="'+composante.com_id+'">'+composante.nomComposante +'</option>';
         }
-        document.getElementById("composante").innerHTML = composante_a;
+        document.getElementById("composante").innerHTML = "<p>Modification réussi</p>";
+       
         
 
     })

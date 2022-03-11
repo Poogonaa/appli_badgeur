@@ -38,7 +38,7 @@ class Accueil extends React.Component {
             })
         }
         else{
-            document.getElementById("utilisateur").innerHTML = "Vous n'êtes pas connecter.";
+            document.getElementById("utilisateur").innerHTML = "Vous n'êtes pas connectés.";
         }
     }
 }

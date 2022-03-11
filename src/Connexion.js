@@ -40,6 +40,7 @@ class Connexion extends React.Component {
 
     connexion(){
         this.state.utilisateur.mdp = sha256(this.state.utilisateur.mdp+"7%Hv_Gwf&q%rX2cljOCC");
+        console.log(this.state.utilisateur.mdp)
         axios({
 			data: this.state.utilisateur,
             method: "post",
