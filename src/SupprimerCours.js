@@ -25,6 +25,13 @@ class SupprimerCours extends React.Component {
         )   
     }
 
+    componentDidMount(){
+
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
+    }
+
     delete(){
         console.log("supprimer un cours")
         axios({

@@ -6,11 +6,9 @@ class Connexion extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            utilisateur : {
-                "login":"Pogo", 
-                "mdp":"pogo123"
+            utilisateur : {}
         },
-        }
+        
         this.handleChange = this.handleChange.bind(this);
         this.connexion = this.connexion.bind(this);
     }

@@ -21,6 +21,11 @@ class ListerCours extends React.Component {
     }
 
     componentDidMount(){
+
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
+
         axios({
             method: "get",
             url: '/cours/multi',

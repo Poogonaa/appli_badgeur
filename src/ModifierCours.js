@@ -10,6 +10,7 @@ class ModifierCours extends React.Component {
         }
         this.update = this.update.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     render() {
@@ -22,25 +23,33 @@ class ModifierCours extends React.Component {
                 <p>Intitule</p><input type="text" name="intitule" value={this.state.cours.intitule} onChange={this.handleChange}/>
                 <br />
                 <button className="btn btn-success start" onClick={this.update} >Modifier</button>
-                <br />
-                <div id="edit_success">
-                </div>
             </div>
         )
     }
 
+    componentDidMount(){
+
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
+    }
+
     update() {
+        console.log("enregistrer")
         axios({
             data:this.state.cours,
             method : "put",
             url : '/cours',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            document.getElementById("edit_success").innerHTML = "<p>Modification réussi!</p>";
+            // res.data est l'objet javascript envoyé par le serveur
+            // JSON.stringify transforme cet objet en chaîne pour pouvoir l'afficher
+            console.log(JSON.stringify(res.data))
         })
     }
 
     handleChange(event){
+        // immutable data
         this.setState({
             cours: {
                 ...this.state.cours,

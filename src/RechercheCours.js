@@ -10,6 +10,7 @@ class RechercherCours extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.rechercher = this.rechercher.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     render() {
@@ -23,6 +24,13 @@ class RechercherCours extends React.Component {
                 <p id="cours"></p>
             </div>
         )   
+    }
+
+    componentDidMount(){
+
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
     }
 
     rechercher(){
