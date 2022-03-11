@@ -55,6 +55,14 @@ class Naviguer extends React.Component {
                 affichage_gestion += '<li><a href="/RechercherComposante">Rechercher une composante</a></li>';
                 affichage_gestion += '<li><a href="/SupprimerComposante">Supprimer une composante</a></li>';
             affichage_gestion += '</ul>';
+            affichage_gestion += '<h5>Filière Langue</h5>';
+            affichage_gestion += '<ul>';
+                affichage_gestion += '<li><a href="/EnregistrerFiliere_langue">Enregistrer une filière langue</a></li>';
+                affichage_gestion += '<li><a href="/ListerFiliere_langue">Lister les filières langues</a></li>';
+                affichage_gestion += '<li><a href="/ModifierFiliere_langue">Modifier une filière langue</a></li>';
+                affichage_gestion += '<li><a href="/RechercherFiliere_langue">Rechercher une filière langue</a></li>';
+                affichage_gestion += '<li><a href="/SupprimerFiliere_langue">Supprimer une filière langue</a></li>';
+            affichage_gestion += '</ul>';
         }
         document.getElementById("Gestion").innerHTML = affichage_gestion;
     }
