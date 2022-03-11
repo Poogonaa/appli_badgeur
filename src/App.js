@@ -11,6 +11,12 @@ import RechercheCours from './RechercheCours.js'
 import SupprimerCours from './SupprimerCours.js'
 import ModifierCours from './ModifierCours.js'
 
+import EnregistrerComposante from './EnregistrerComposante.js'
+import ListerComposante from './ListerComposante.js'
+import RechercherComposante from './RechercherComposante.js'
+import ModifierComposante from './ModifierComposante.js'
+import SupprimerComposante from './SupprimerComposante.js'
+
 import EnregistrerIntervenant from './EnregistrerIntervenant.js'
 import ListerIntervenant from './ListerIntervenant.js'
 import RechercheIntervenant from './RechercheIntervenant.js'
@@ -22,9 +28,6 @@ import ListerGestionnaire from './ListerGestionnaire.js'
 import RechercheGestionnaire from './RechercheGestionnaire.js'
 import ModifierGestionnaire from './ModifierGestionnaire.js'
 import SupprimerGestionnaire from './SupprimerGestionnaire.js'
-
-import EnregistrerComposante from './EnregistrerComposante.js'
-import ListerComposante from './ListerComposante.js'
 
 class App extends React.Component {
   
@@ -57,6 +60,9 @@ class App extends React.Component {
 
             <Route exact path="/EnregistrerComposante" element={<EnregistrerComposante />} />
             <Route exact path="/ListerComposante" element={<ListerComposante />} />
+            <Route exact path="/RechercherComposante" element={<RechercherComposante />} />
+            <Route exact path="/ModifierComposante" element={<ModifierComposante />} />
+            <Route exact path="/SupprimerComposante" element={<SupprimerComposante />} />
 
             
 
