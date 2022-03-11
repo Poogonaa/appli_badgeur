@@ -5,6 +5,9 @@ import Accueil from './Accueil.js'
 
 import EnregistrerCours from './EnregistrerCours.js'
 import ListerCours from './ListerCours.js'
+import RechercheCours from './RechercheCours.js'
+import DeleteCours from './DeleteCours.js'
+import UpdateCours from './UpdateCours.js'
 
 import EnregistrerComposante from './EnregistrerComposante.js'
 import ListerComposante from './ListerComposante.js'
@@ -27,6 +30,8 @@ import RechercheFiliere_langue from './RechercheFiliere_langue.js'
 import ModifierFiliere_langue from './ModifierFiliere_langue.js'
 import SupprimerFiliere_langue from './SupprimerFiliere_langue.js'
 
+import Connexion from './Connexion.js'
+
 class App extends React.Component {
 
   constructor(props) {
@@ -41,6 +46,9 @@ class App extends React.Component {
             <Route exact path="/" element={<Accueil />} />
             <Route exact path="/EnregistrerCours" element={<EnregistrerCours />} />
             <Route exact path="/ListerCours" element={<ListerCours />} />
+            <Route exact path="/RechercheCours" element={<RechercheCours />}/>
+            <Route exact path="/DeleteCours" element={<DeleteCours />}/>
+            <Route exact path="UpdateCours" element={<UpdateCours/>}/>
 
             <Route exact path="/EnregistrerIntervenant" element={<EnregistrerIntervenant/>} />
             <Route exact path="/ListerIntervenant" element={<ListerIntervenant/>} />
@@ -62,6 +70,8 @@ class App extends React.Component {
 
             <Route exact path="/EnregistrerComposante" element={<EnregistrerComposante />} />
             <Route exact path="/ListerComposante" element={<ListerComposante />} />
+
+            <Route exact path="/Connexion" element={<Connexion/>}/>
 
           </Routes>
         </Router>
