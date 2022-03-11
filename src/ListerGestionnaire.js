@@ -32,7 +32,9 @@ class ListerGestionnaire extends React.Component {
     }
 
     componentDidMount(){
-        console.log("lister les gestionnaires")
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {

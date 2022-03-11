@@ -12,8 +12,6 @@ class ListerCours extends React.Component {
     }
 
     render() {
-        console.log(this.state.cours)
-        console.log("nombre de cours : "+this.state.cours.length)
         return (
             <div>
                 <h2>Liste des Cours</h2>
@@ -23,12 +21,15 @@ class ListerCours extends React.Component {
     }
 
     componentDidMount(){
-        console.log("lister les cours")
+
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
+
         axios({
             method: "get",
             url: '/cours/multi',
         }).then(res => {
-            //console.log(JSON.stringify(res.data))
             this.setState({
                 cours: res.data
             });

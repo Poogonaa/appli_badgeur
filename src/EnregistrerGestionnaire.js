@@ -10,6 +10,7 @@ class EnregistrerGestionnaire extends React.Component {
         }
         this.enregistrer = this.enregistrer.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     render() {
@@ -39,30 +40,31 @@ class EnregistrerGestionnaire extends React.Component {
                 <br />
                 <br />
                 <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>
+                <br />
                 <div id="add_success">
                 </div>
             </div>
         )
     }
 
+    componentDidMount(){
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
+    }
+
     enregistrer() {
-        console.log("enregistrer")
-        console.log(this.state.utilisateur)
         axios({
             data:this.state.utilisateur,
             method : "post",
             url : '/gestionnaires',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            // res.data est l'objet javascript envoyé par le serveur
-            // JSON.stringify transforme cet objet en chaîne pour pouvoir l'afficher
-            console.log(JSON.stringify(res.data))
             document.getElementById("add_success").innerHTML = "<p>Ajout réussi!</p>";
         })
     }
 
     handleChange(event){
-        // immutable data
         this.setState({
             utilisateur: {
                 ...this.state.utilisateur,

@@ -7,6 +7,7 @@ class SupprimerGestionnaire extends React.Component {
         super(props)
         this.state={
             utilisateur : {},
+            utilisateurs : {},
         }
         this.rechercher = this.rechercher.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -33,7 +34,9 @@ class SupprimerGestionnaire extends React.Component {
     }
 
     componentDidMount(){
-        console.log("lister les gestionnaires")
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {
@@ -42,7 +45,6 @@ class SupprimerGestionnaire extends React.Component {
             });
             let utilisateur_a = '<option value="">Choisir un login</option>';
             for (const utilisateur of this.state.utilisateurs) {
-                console.log(utilisateur.dtype);
                 if(utilisateur.dtype === "Gestionnaire"){
                     utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
                 }
@@ -52,8 +54,6 @@ class SupprimerGestionnaire extends React.Component {
     }
 
     rechercher(){
-        console.log("supprimer un intervenant")
-        console.log(this.state.utilisateur)
         axios({
             url : '/utilisateurs/'+this.state.utilisateur.uti_id,
             method : "delete",
@@ -66,7 +66,6 @@ class SupprimerGestionnaire extends React.Component {
     }
 
     handleChange(event){
-        // immutable data
         this.setState({
             utilisateur: {
                 ...this.state.utilisateur,

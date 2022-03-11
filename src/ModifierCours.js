@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-class UpdateCours extends React.Component {
+class ModifierCours extends React.Component {
 
     constructor(props) {
         super(props)
@@ -10,6 +10,7 @@ class UpdateCours extends React.Component {
         }
         this.update = this.update.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     render() {
@@ -24,6 +25,13 @@ class UpdateCours extends React.Component {
                 <button className="btn btn-success start" onClick={this.update} >Modifier</button>
             </div>
         )
+    }
+
+    componentDidMount(){
+
+        if( sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
     }
 
     update() {
@@ -51,4 +59,4 @@ class UpdateCours extends React.Component {
 
     }
 }
-export default UpdateCours
+export default ModifierCours

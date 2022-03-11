@@ -1,13 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 
-class ModifierGestionnaire extends React.Component {
+class ModifierFiliere_langue extends React.Component {
 
     constructor(props) {
         super(props)
         this.state={
-            utilisateur : {},
-            utilisateurs : {},
+            filiere_langue : {},
+            filiere_langues : {},
         }
         this.rechercher = this.rechercher.bind(this);
         this.modifier = this.modifier.bind(this);
@@ -18,11 +18,11 @@ class ModifierGestionnaire extends React.Component {
     render() {
         return (
             <div>
-                <h2>Rechercher un gestionnaire</h2>
+                <h2>Rechercher une filiere langue</h2>
                 <label>Login:</label>
                 <div>
                     <br />
-                    <select name="uti_id" id="utilisateur" onChange={this.handleChange}>
+                    <select name="fil_id" id="filiere_langue_recherche" onChange={this.handleChange}>
                             
                     </select>
                     <br />
@@ -31,27 +31,14 @@ class ModifierGestionnaire extends React.Component {
                     <br />
                     <br />
                 </div>
-                <label>Login:</label>
+                <label>Code:</label>
                 <br />
-                <input type="text" name="login" value={this.state.utilisateur.login} onChange={this.handleChange}/>
-                <br /><br />
-                <label>Mot de passe:</label>
-                <br />
-                <input type="text" name="mdp" value={this.state.utilisateur.mdp} onChange={this.handleChange}/>
+                <input type="text" name="code" value={this.state.filiere_langue.code} onChange={this.handleChange}/>
                 <br /><br />
                 <label>Nom:</label>
                 <br />
-                <input type="text" name="nom" value={this.state.utilisateur.nom} onChange={this.handleChange}/>
+                <input type="text" name="nom" value={this.state.filiere_langue.nom} onChange={this.handleChange}/>
                 <br /><br />
-                <label>Prenom:</label>
-                <br />
-                <input type="text" name="prenom" value={this.state.utilisateur.prenom} onChange={this.handleChange}/>
-                <br /><br />
-                <label>Mail:</label>
-                <br />
-                <input type="text" name="mail" value={this.state.utilisateur.mail} onChange={this.handleChange}/>
-                <br />
-                <br />
                 <button className="btn btn-success start" onClick={this.modifier} >Modifier</button>
                 <br />
                 <div id="edit_success">
@@ -62,9 +49,9 @@ class ModifierGestionnaire extends React.Component {
 
     modifier() {
         axios({
-            data:this.state.utilisateur,
+            data:this.state.filiere_langue,
             method : "put",
-            url : '/utilisateurs',
+            url : '/filiere_langues',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
             document.getElementById("edit_success").innerHTML = "<p>Modification réussi!</p>";
@@ -73,11 +60,11 @@ class ModifierGestionnaire extends React.Component {
 
     rechercher(event){
         axios({
-            url : '/utilisateurs/'+this.state.utilisateur.uti_id,
+            url : '/filiere_langues/'+this.state.filiere_langue.fil_id,
             method : "get",
         }).then(res => {
             this.setState({
-                utilisateur : res.data,
+                filiere_langue : res.data,
             });
         })
     }
@@ -86,29 +73,27 @@ class ModifierGestionnaire extends React.Component {
         if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
-        axios({url : '/utilisateurs/multi',
+        axios({url : '/filiere_langues/multi',
                method : "get",
         }).then(res => {
             this.setState({
-                utilisateurs : res.data,
+                filiere_langues : res.data,
             });
-            let utilisateur_a = '<option value="">Choisir un login</option>';
-            for (const utilisateur of this.state.utilisateurs) {
-                if(utilisateur.dtype === "Gestionnaire"){
-                    utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
-                }
+            let filiere_langue_a = '<option value="">Choisir un nom</option>';
+            for (const filiere_langue of this.state.filiere_langues) {
+                filiere_langue_a += '<option value="'+filiere_langue.fil_id+'">'+filiere_langue.nom+'</option>';
               }
-              document.getElementById("utilisateur").innerHTML = utilisateur_a;
+              document.getElementById("filiere_langue_recherche").innerHTML = filiere_langue_a;
         })
     }
 
     handleChange(event){
         this.setState({
-            utilisateur: {
-                ...this.state.utilisateur,
+            filiere_langue: {
+                ...this.state.filiere_langue,
                 [event.target.name]: event.target.value
             }
         });
     }
 }
-export default ModifierGestionnaire
+export default ModifierFiliere_langue

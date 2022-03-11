@@ -7,9 +7,10 @@ class ModifierIntervenant extends React.Component {
         super(props)
         this.state={
             utilisateur : {},
+            utilisateurs : {},
         }
         this.rechercher = this.rechercher.bind(this);
-        this.enregistrer = this.enregistrer.bind(this);
+        this.modifier = this.modifier.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
     }
@@ -51,28 +52,29 @@ class ModifierIntervenant extends React.Component {
                 <input type="text" name="mail" value={this.state.utilisateur.mail} onChange={this.handleChange}/>
                 <br />
                 <br />
-                <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>
+                <button className="btn btn-success start" onClick={this.modifier} >Modifier</button>
+                <br />
+                <div id="edit_success">
+                </div>
             </div>
         )
     }
 
-    enregistrer() {
-        console.log("enregistrer")
+    modifier() {
+        if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
+            document.location.href = "/";
+        }
         axios({
             data:this.state.utilisateur,
             method : "put",
             url : '/utilisateurs',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
-            // res.data est l'objet javascript envoyé par le serveur
-            // JSON.stringify transforme cet objet en chaîne pour pouvoir l'afficher
-            console.log(JSON.stringify(res.data))
+            document.getElementById("edit_success").innerHTML = "<p>Modification réussi!</p>";
         })
     }
 
     rechercher(event){
-        console.log("afficher un intervenant")
-        console.log(this.state.utilisateur)
         axios({
             url : '/utilisateurs/'+this.state.utilisateur.uti_id,
             method : "get",
@@ -84,7 +86,6 @@ class ModifierIntervenant extends React.Component {
     }
 
     componentDidMount(){
-        console.log("lister les intervenants")
         axios({url : '/utilisateurs/multi',
                method : "get",
         }).then(res => {
@@ -102,7 +103,6 @@ class ModifierIntervenant extends React.Component {
     }
 
     handleChange(event){
-        // immutable data
         this.setState({
             utilisateur: {
                 ...this.state.utilisateur,

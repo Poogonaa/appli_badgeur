@@ -24,7 +24,6 @@ class ListerComposante extends React.Component {
    
 
     componentDidMount  () {
-        console.log("Lister des composantes")
         axios({
             method: "get",
             url: '/composantes/multi',
@@ -33,8 +32,6 @@ class ListerComposante extends React.Component {
             this.setState({
                 composantes : res.data,
             })
-            console.log(this.state.composantes)
-
             let composante_a = "<ul>";
             for (const composante of this.state.composantes) {
                 composante_a += "<li>"+composante.nomComposante+"</li>";
@@ -42,7 +39,6 @@ class ListerComposante extends React.Component {
               composante_a += "</ul>";
               document.getElementById("affichage_composante").innerHTML = composante_a;
         })
-            .catch(err=> console.log(err))
     }
 }
 

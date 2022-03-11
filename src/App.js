@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Accueil from './Accueil.js'
+import Connexion from './Connexion.js'
+import Deconnexion from './Deconnexion.js'
 
 import EnregistrerCours from './EnregistrerCours.js'
 import ListerCours from './ListerCours.js'
 import RechercheCours from './RechercheCours.js'
+
 import DeleteCours from './DeleteCours.js'
 import UpdateCours from './UpdateCours.js'
 
@@ -14,6 +17,11 @@ import ListerComposante from './ListerComposante.js'
 import RechercherComposante from './RechercherComposante.js'
 import ModifierComposante from './ModifierComposante.js'
 import SupprimerComposante from './SupprimerComposante.js'
+
+
+import SupprimerCours from './SupprimerCours.js'
+import ModifierCours from './ModifierCours.js'
+
 
 
 import EnregistrerIntervenant from './EnregistrerIntervenant.js'
@@ -28,23 +36,33 @@ import RechercheGestionnaire from './RechercheGestionnaire.js'
 import ModifierGestionnaire from './ModifierGestionnaire.js'
 import SupprimerGestionnaire from './SupprimerGestionnaire.js'
 
+import EnregistrerComposante from './EnregistrerComposante.js'
+import ListerComposante from './ListerComposante.js'
+import RechercherComposante from './RechercherComposante.js'
+import ModifierComposante from './ModifierComposante.js'
+import SupprimerComposante from './SupprimerComposante.js'
+
+
 class App extends React.Component {
 
   constructor(props) {
     super(props)
   }
-
+  
   render() {
     return (
       <div>
         <Router>
           <Routes>
             <Route exact path="/" element={<Accueil />} />
+            <Route exact path="/Connexion" element={<Connexion/>}/>
+            <Route exact path="/Deconnexion" element={<Deconnexion/>}/>
+
             <Route exact path="/EnregistrerCours" element={<EnregistrerCours />} />
             <Route exact path="/ListerCours" element={<ListerCours />} />
             <Route exact path="/RechercheCours" element={<RechercheCours />}/>
-            <Route exact path="/DeleteCours" element={<DeleteCours />}/>
-            <Route exact path="UpdateCours" element={<UpdateCours/>}/>
+            <Route exact path="ModifierCours" element={<ModifierCours/>}/>
+            <Route exact path="/SupprimerCours" element={<SupprimerCours />}/>
 
             <Route exact path="/EnregistrerIntervenant" element={<EnregistrerIntervenant/>} />
             <Route exact path="/ListerIntervenant" element={<ListerIntervenant/>} />
@@ -63,6 +81,8 @@ class App extends React.Component {
             <Route exact path="/RechercherComposante" element={<RechercherComposante />} />
             <Route exact path="/ModifierComposante" element={<ModifierComposante />} />
             <Route exact path="/SupprimerComposante" element={<SupprimerComposante />} />
+
+            
 
           </Routes>
         </Router>
