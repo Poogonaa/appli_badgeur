@@ -31,7 +31,7 @@ import SupprimerGestionnaire from './SupprimerGestionnaire.js'
 
 import EnregistrerFiliere_langue from './EnregistrerFiliere_langue.js'
 import ListerFiliere_langue from './ListerFiliere_langue.js'
-import RechercherFiliere_langue from './RechercherFiliere_langue.js'
+import RechercherFiliere_langue from './RechercheFiliere_langue.js'
 import ModifierFiliere_langue from './ModifierFiliere_langue.js'
 import SupprimerFiliere_langue from './SupprimerFiliere_langue.js'
 
