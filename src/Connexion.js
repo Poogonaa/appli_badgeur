@@ -56,7 +56,7 @@ class Connexion extends React.Component {
         axios({
 			data: this.state.connecter,
             method: "post",
-            url: '/utilisateurs/signin',
+            url: '/utilisateurs/login',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
             this.setState({
