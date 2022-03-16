@@ -15,13 +15,13 @@ class ListerGestionnaire extends React.Component {
         return (
             <div>
                 <h2>Liste des gestionnaire</h2>
-                <table>
+                <table className="table">
                     <thead>
                     <tr>
-                        <td>Login</td>
-                        <td>Nom</td>
-                        <td>Prenom</td>
-                        <td>mail</td>
+                        <th>Login</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>mail</th>
                     </tr>
                     </thead>
                     <tbody id = "utilisateur">
@@ -35,7 +35,7 @@ class ListerGestionnaire extends React.Component {
         if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
-        axios({url : '/utilisateurs/multi',
+        axios({url : '/gestionnaires/multi',
                method : "get",
         }).then(res => {
             this.setState({
@@ -43,14 +43,12 @@ class ListerGestionnaire extends React.Component {
             });
             let utilisateur_a = "";
             for (const utilisateur of this.state.utilisateurs) {
-                if(utilisateur.dtype === "Gestionnaire"){
-                    utilisateur_a += "<tr>";
-                    utilisateur_a += "<td>"+utilisateur.login+"</td>";
-                    utilisateur_a += "<td>"+utilisateur.nom+"</td>";
-                    utilisateur_a += "<td>"+utilisateur.prenom+"</td>";
-                    utilisateur_a += "<td>"+utilisateur.mail+"</td>";
-                    utilisateur_a += "</tr>"
-                }
+                utilisateur_a += "<tr>";
+                utilisateur_a += "<td>"+utilisateur.login+"</td>";
+                utilisateur_a += "<td>"+utilisateur.nom+"</td>";
+                utilisateur_a += "<td>"+utilisateur.prenom+"</td>";
+                utilisateur_a += "<td>"+utilisateur.mail+"</td>";
+                utilisateur_a += "</tr>"
               }
               document.getElementById("utilisateur").innerHTML = utilisateur_a;
         })

@@ -57,16 +57,17 @@ class ModifierGestionnaire extends React.Component {
         axios({
             data:this.state.utilisateur,
             method : "put",
-            url : '/utilisateurs',
+            url : '/gestionnaires',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
             alert("Gestionnaire modifié");
+            this.componentDidMount();
         })
     }
 
     rechercher(event){
         axios({
-            url : '/utilisateurs/'+this.state.utilisateur.uti_id,
+            url : '/gestionnaires/'+this.state.utilisateur.uti_id,
             method : "get",
         }).then(res => {
             this.setState({
@@ -79,7 +80,7 @@ class ModifierGestionnaire extends React.Component {
         if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
-        axios({url : '/utilisateurs/multi',
+        axios({url : '/gestionnaires/multi',
                method : "get",
         }).then(res => {
             this.setState({

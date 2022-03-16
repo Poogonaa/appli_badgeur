@@ -15,11 +15,11 @@ class ListerFiliere_langue extends React.Component {
         return (
             <div>
                 <h2>Liste des filières langues</h2>
-                <table>
+                <table className="table">
                     <thead>
                     <tr>
-                        <td>Nom</td>
-                        <td>Code</td>
+                        <th scope="row">Nom</th>
+                        <th scope="row">Code</th>
                     </tr>
                     </thead>
                     <tbody id = "filiere_langue">
@@ -42,8 +42,8 @@ class ListerFiliere_langue extends React.Component {
             let filiere_langue_a = "";
             for (const filiere_langue of this.state.filiere_langues) {
                 filiere_langue_a += "<tr>";
-                filiere_langue_a += "<td>"+filiere_langue.nom+"</td>";
-                filiere_langue_a += "<td>"+filiere_langue.code+"</td>";
+                filiere_langue_a += "<td scope='row'>"+filiere_langue.nom+"</td>";
+                filiere_langue_a += "<td scope='row'>"+filiere_langue.code+"</td>";
                 filiere_langue_a += "</tr>"
               }
               document.getElementById("filiere_langue").innerHTML = filiere_langue_a;

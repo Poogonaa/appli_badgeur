@@ -28,23 +28,23 @@ class EnregistrerGestionnaire extends React.Component {
                 <br />
                 <label>Login:</label>
                 <br />
-                <input id="login" type="text" name="login" value={this.state.utilisateur.login} placeholder="login" onChange={this.handleChange}/>
+                <input id="login" type="text" name="login" required={true} value={this.state.utilisateur.login} placeholder="login" onChange={this.handleChange}/>
                 <br /><br />
                 <label>Mot de passe:</label>
                 <br />
-                <input id="mdp" type="password" name="mdp" value={this.state.utilisateur.mdp} placeholder="mot de passe" onChange={this.handleChange}/>
+                <input id="mdp" type="password" name="mdp" required={true} value={this.state.utilisateur.mdp} placeholder="mot de passe" onChange={this.handleChange}/>
                 <br /><br />
                 <label>Nom:</label>
                 <br />
-                <input id="nom" type="text" name="nom" value={this.state.utilisateur.nom} placeholder="nom" onChange={this.handleChange}/>
+                <input id="nom" type="text" name="nom" required={true} value={this.state.utilisateur.nom} placeholder="nom" onChange={this.handleChange}/>
                 <br /><br />
                 <label>Prenom:</label>
                 <br />
-                <input id="prenom" type="text" name="prenom" value={this.state.utilisateur.prenom} placeholder="prenom" onChange={this.handleChange}/>
+                <input id="prenom" type="text" name="prenom" required={true} value={this.state.utilisateur.prenom} placeholder="prenom" onChange={this.handleChange}/>
                 <br /><br />
                 <label>Mail:</label>
                 <br />
-                <input id="mail" type="text" name="mail" value={this.state.utilisateur.mail} placeholder="mail" onChange={this.handleChange}/>
+                <input id="mail" type="text" name="mail" required={true} value={this.state.utilisateur.mail} placeholder="mail" onChange={this.handleChange}/>
                 <br />
                 <br />
                 <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>

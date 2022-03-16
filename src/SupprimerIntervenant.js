@@ -34,7 +34,7 @@ class SupprimerIntervenant extends React.Component {
         if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
-        axios({url : '/utilisateurs/multi',
+        axios({url : '/intervenants/multi',
                method : "get",
         }).then(res => {
             this.setState({
@@ -42,9 +42,7 @@ class SupprimerIntervenant extends React.Component {
             });
             let utilisateur_a = '<option value="">Choisir un login</option>';
             for (const utilisateur of this.state.utilisateurs) {
-                if(utilisateur.dtype === "Intervenant"){
-                    utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
-                }
+                utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
               }
               document.getElementById("utilisateur_recherche").innerHTML = utilisateur_a;
         })
@@ -52,7 +50,7 @@ class SupprimerIntervenant extends React.Component {
 
     supprimer(){
         axios({
-            url : '/utilisateurs/'+this.state.utilisateur.uti_id,
+            url : '/intervenants/'+this.state.utilisateur.uti_id,
             method : "delete",
         }).then(res => {
             this.setState({

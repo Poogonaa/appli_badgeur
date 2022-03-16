@@ -13,7 +13,8 @@ class Accueil extends React.Component {
             <div>
                 <h2>Accueil</h2>
                 <br />
-                <div id = "utilisateur">
+                <div>
+                <table id = "utilisateur" className="table"></table>
                 </div>
             </div>
         )
@@ -27,13 +28,13 @@ class Accueil extends React.Component {
                 this.setState({
                     utilisateur : res.data,
                 });
-                let utilisateur_a = "<table><thead><tr><td>Login</td><td>Nom</td><td>Prenom</td><td>mail</td></tr></thead><tbody>";
+                let utilisateur_a = '<thead><tr><th>Login</th><th>Nom</th><th>Prenom</th><th>mail</th></tr></thead><tbody>';
                 utilisateur_a += "<tr>";
                 utilisateur_a += "<td>"+this.state.utilisateur.login+"</td>";
                 utilisateur_a += "<td>"+this.state.utilisateur.nom+"</td>";
                 utilisateur_a += "<td>"+this.state.utilisateur.prenom+"</td>";
                 utilisateur_a += "<td>"+this.state.utilisateur.mail+"</td>";
-                utilisateur_a += "</tr></tbody></table>";
+                utilisateur_a += "</tr></tbody>";
                 document.getElementById("utilisateur").innerHTML = utilisateur_a;
             })
         }
