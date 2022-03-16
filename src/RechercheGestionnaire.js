@@ -47,7 +47,7 @@ class RechercherGestionnaire extends React.Component {
         if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
-        axios({url : '/utilisateurs/multi',
+        axios({url : '/gestionnaires/multi',
                method : "get",
         }).then(res => {
             this.setState({
@@ -55,9 +55,7 @@ class RechercherGestionnaire extends React.Component {
             });
             let utilisateur_a = '<option value="">Choisir un login</option>';
             for (const utilisateur of this.state.utilisateurs) {
-                if(utilisateur.dtype === "Gestionnaire"){
-                    utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
-                }
+                utilisateur_a += '<option value="'+utilisateur.uti_id+'">'+utilisateur.login+'</option>';
               }
               document.getElementById("utilisateur_recherche").innerHTML = utilisateur_a;
         })
@@ -65,7 +63,7 @@ class RechercherGestionnaire extends React.Component {
 
     rechercher(){
         axios({
-            url : '/utilisateurs/'+this.state.utilisateur.uti_id,
+            url : '/gestionnaires/'+this.state.utilisateur.uti_id,
             method : "get",
         }).then(res => {
             this.setState({

@@ -27,11 +27,11 @@ class RechercherFiliere_langue extends React.Component {
                 <br />
                 <button className="btn btn-success start" onClick={this.rechercher} >Rechercher</button>
                 <br />
-                <table>
+                <table className="table">
                     <thead>
                     <tr>
-                        <td>Nom</td>
-                        <td>Code</td>
+                        <th scope="row">Nom</th>
+                        <th scope="row">Code</th>
                     </tr>
                     </thead>
                     <tbody id = "filiere_langue">
@@ -69,8 +69,8 @@ class RechercherFiliere_langue extends React.Component {
             });
             let filiere_langue_a = "";
             filiere_langue_a += "<tr>";
-            filiere_langue_a += "<td>"+this.state.filiere_langue.nom+"</td>";
-            filiere_langue_a += "<td>"+this.state.filiere_langue.code+"</td>";
+            filiere_langue_a += "<td scope='row'>"+this.state.filiere_langue.nom+"</td>";
+            filiere_langue_a += "<td scope='row'>"+this.state.filiere_langue.code+"</td>";
             filiere_langue_a += "</tr>"
             document.getElementById("filiere_langue").innerHTML = filiere_langue_a;
         })

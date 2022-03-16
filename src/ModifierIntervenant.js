@@ -60,16 +60,17 @@ class ModifierIntervenant extends React.Component {
         axios({
             data:this.state.utilisateur,
             method : "put",
-            url : '/utilisateurs',
+            url : '/intervenants',
             headers: { 'Content-Type': 'application/json'},
         }).then(res => {
             alert("Intervenant modifié");
+            this.componentDidMount();
         })
     }
 
     rechercher(event){
         axios({
-            url : '/utilisateurs/'+this.state.utilisateur.uti_id,
+            url : '/intervenants/'+this.state.utilisateur.uti_id,
             method : "get",
         }).then(res => {
             this.setState({
@@ -79,7 +80,7 @@ class ModifierIntervenant extends React.Component {
     }
 
     componentDidMount(){
-        axios({url : '/utilisateurs/multi',
+        axios({url : '/intervenants/multi',
                method : "get",
         }).then(res => {
             this.setState({

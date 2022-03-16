@@ -15,13 +15,13 @@ class ListerIntervenant extends React.Component {
         return (
             <div>
                 <h2>Liste des intervenant</h2>
-                <table>
+                <table className="table">
                     <thead>
                     <tr>
-                        <td>Login</td>
-                        <td>Nom</td>
-                        <td>Prenom</td>
-                        <td>mail</td>
+                        <th scope="row">Login</th>
+                        <th scope="row">Nom</th>
+                        <th scope="row">Prenom</th>
+                        <th scope="row">mail</th>
                     </tr>
                     </thead>
                     <tbody id = "utilisateur">
@@ -35,25 +35,23 @@ class ListerIntervenant extends React.Component {
         if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
-        axios({url : '/utilisateurs/multi',
+        axios({url : '/intervenants/multi',
                method : "get",
         }).then(res => {
             this.setState({
                 utilisateurs : res.data,
             });
-
+            console.log(this.state.utilisateurs)
             let utilisateur_a = "";
             for (const utilisateur of this.state.utilisateurs) {
-                if(utilisateur.dtype === "Intervenant"){
-                    utilisateur_a += "<tr>";
-                    utilisateur_a += "<td>"+utilisateur.login+"</td>";
-                    utilisateur_a += "<td>"+utilisateur.nom+"</td>";
-                    utilisateur_a += "<td>"+utilisateur.prenom+"</td>";
-                    utilisateur_a += "<td>"+utilisateur.mail+"</td>";
-                    utilisateur_a += "</tr>"
-                }
-              }
-              document.getElementById("utilisateur").innerHTML = utilisateur_a;
+                utilisateur_a += "<tr>";
+                utilisateur_a += "<td>"+utilisateur.login+"</td>";
+                utilisateur_a += "<td>"+utilisateur.nom+"</td>";
+                utilisateur_a += "<td>"+utilisateur.prenom+"</td>";
+                utilisateur_a += "<td>"+utilisateur.mail+"</td>";
+                utilisateur_a += "</tr>"
+            }
+            document.getElementById("utilisateur").innerHTML = utilisateur_a;
         })
     }
 
