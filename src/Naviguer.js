@@ -63,11 +63,17 @@ class Naviguer extends React.Component {
                 affichage_navigation += '<li><a href="/RechercherFiliere_langue">Rechercher une filière langue</a></li>';
                 affichage_navigation += '<li><a href="/SupprimerFiliere_langue">Supprimer une filière langue</a></li>';
             affichage_navigation += '</ul>';
-        } else if(sessionStorage.getItem("dtype") == "Intervenant"){
+            affichage_navigation += '<h5>Export de données</h5>';
+            affichage_navigation += '<ul>';
+                affichage_navigation += '<li><a href="/ExportSeance">ExportSeance langue</a></li>';
+            affichage_navigation += '</ul>';
+
+        } 
+        else if(sessionStorage.getItem("dtype") == "Intervenant"){
             affichage_navigation += '<h5>Cours</h5>';
             affichage_navigation += '<ul>';
                 affichage_navigation +='<li><a href="/ListerSeanceEffectuee">Lister les Séances de Formation effectuées</a></li>';
-            affichage_navigation += '</ul>>';
+            affichage_navigation += '</ul>';
 
         }
         document.getElementById("Gestion").innerHTML = affichage_navigation;
