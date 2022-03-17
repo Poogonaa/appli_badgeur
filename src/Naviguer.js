@@ -63,10 +63,12 @@ class Naviguer extends React.Component {
                 affichage_navigation += '<li><a href="/RechercherFiliere_langue">Rechercher une filière langue</a></li>';
                 affichage_navigation += '<li><a href="/SupprimerFiliere_langue">Supprimer une filière langue</a></li>';
             affichage_navigation += '</ul>';
+            affichage_navigation +='<li><a href ="/Pointage" > POintage </a></li>';
         } else if(sessionStorage.getItem("dtype") == "Intervenant"){
             affichage_navigation += '<h5>Cours</h5>';
             affichage_navigation += '<ul>';
                 affichage_navigation +='<li><a href="/ListerSeanceEffectuee">Lister les Séances de Formation effectuées</a></li>';
+                affichage_navigation +='<li><a href ="/Pointage" > POintage </a></li>';
             affichage_navigation += '</ul>>';
 
         }
