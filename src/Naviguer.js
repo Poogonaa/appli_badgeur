@@ -14,7 +14,6 @@ class Naviguer extends React.Component {
     }
 
     componentDidMount(){
-        console.log(sessionStorage.getItem("id"))
         let affichage_navigation = '<ul><li><a href="/">Accueil</a></li>'
         if(sessionStorage.getItem("id") === null){
             affichage_navigation += '<li><a href="/Connexion">Connexion</a></li></ul>';

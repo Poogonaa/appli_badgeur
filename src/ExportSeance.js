@@ -42,20 +42,14 @@ class ExportSeance extends React.Component {
     }
 
     render() {
-      console.log("Render")
-      console.log("listSeance : "+this.listSeance)
       return (
         <div style={{ height: 500, width: '80%' }}>
           <h4>
            How to use export our DataGrid
            as CSV in ReactJS?
           </h4>
-          <DataGrid rows={this.listSeance} columns={columns} 
-            pageSize={5}
-            components={{
-              Toolbar: MyExportButton,
-            }}
-          />
+          <div id="dataGrid"></div>
+          
         </div>
       );
     }
@@ -63,7 +57,6 @@ class ExportSeance extends React.Component {
     
 
     componentDidMount(){
-      console.log("componentDidMount")
       if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
           document.location.href = "/";
       }
@@ -80,14 +73,21 @@ class ExportSeance extends React.Component {
           let i = 0;
           for (const uneSeance of this.state.seances) {
             this.listSeance[i] = { 
-              id: uneSeance.sea_id, 
+              id: uneSeance.sea_id,
               duree: uneSeance.dureeEffective, 
               valide: uneSeance.valide, 
               commentaire:uneSeance.commentaire 
             }
             i++;
           }
-          console.log("fin Requête axios"+this.listSeance)
+          let dataGrid = "";
+          dataGrid += "<DataGrid rows={this.listSeance} columns={columns}";
+          dataGrid += " pageSize={5}";
+          dataGrid += " components={{Toolbar: MyExportButton,}}/>";
+          document.getElementById("dataGrid").innerHTML = dataGrid;
+          
+          console.log("fin Requête axios");
+          console.log(dataGrid);
         })
       }
   }
