@@ -14,7 +14,6 @@ class Naviguer extends React.Component {
     }
 
     componentDidMount(){
-        console.log(sessionStorage.getItem("id"))
         let affichage_navigation = '<ul><li><a href="/">Accueil</a></li>'
         if(sessionStorage.getItem("id") === null){
             affichage_navigation += '<li><a href="/Connexion">Connexion</a></li></ul>';
@@ -63,12 +62,17 @@ class Naviguer extends React.Component {
                 affichage_navigation += '<li><a href="/RechercherFiliere_langue">Rechercher une filière langue</a></li>';
                 affichage_navigation += '<li><a href="/SupprimerFiliere_langue">Supprimer une filière langue</a></li>';
             affichage_navigation += '</ul>';
+            affichage_navigation += '<h5>Export de données</h5>';
+            affichage_navigation += '<ul>';
+                affichage_navigation += '<li><a href="/ExportSeance">ExportSeance langue</a></li>';
+            affichage_navigation += '</ul>';
         } else if(sessionStorage.getItem("dtype") === "Intervenant"){
             affichage_navigation += '<h5>Cours</h5>';
             affichage_navigation += '<ul>';
                 affichage_navigation +='<li><a href="/ListerSeanceEffectuee">Lister les Séances de Formation effectuées</a></li>';
             affichage_navigation += '</ul>';
-
+                affichage_navigation +='<li><a href ="/Pointage" > POintage </a></li>';
+            affichage_navigation += '</ul>';
         }
         document.getElementById("Gestion").innerHTML = affichage_navigation;
     }
