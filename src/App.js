@@ -36,8 +36,10 @@ import ModifierFiliere_langue from './ModifierFiliere_langue.js'
 import SupprimerFiliere_langue from './SupprimerFiliere_langue.js'
 
 import ListerSeanceEffectuee from './ListerSeanceEffectuee.js'
+
 import Pointage from './Pointage.js'
 
+import ExportSeance from './ExportSeance.js'
 
 class App extends React.Component {
   
@@ -81,7 +83,10 @@ class App extends React.Component {
             <Route exact path="/SupprimerFiliere_langue" element={<SupprimerFiliere_langue />} />
 
             <Route exact path="/ListerSeanceEffectuee" element={<ListerSeanceEffectuee />}/>
+
             <Route exact path="/Pointage" element={<Pointage/>}/>
+
+            <Route exact path="/ExportSeance" element={<ExportSeance/>}/>
           </Routes>
         </Router>
       </div>
