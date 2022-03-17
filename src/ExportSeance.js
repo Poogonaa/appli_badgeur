@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import axios from 'axios'
 import { DataGrid, GridToolbarExport,
@@ -94,3 +95,4 @@ class ExportSeance extends React.Component {
 
 }
 export default ExportSeance
+*/
