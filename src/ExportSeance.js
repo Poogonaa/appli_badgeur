@@ -58,7 +58,7 @@ class ExportSeance extends Component {
     let name_file = "Heures_effectuees_par_intervenants_"+date+".csv"
     return (
       <div>
-        <input type="button" value="Export to CSV (Async)" onClick={this.downloadReport} />
+        <input type="button" value="Export to CSV" onClick={this.downloadReport} />
         <CSVLink
           headers={headers}
           filename={name_file}
