@@ -62,6 +62,14 @@ class Naviguer extends React.Component {
                 affichage_navigation += '<li><a href="/RechercherFiliere_langue">Rechercher une filière langue</a></li>';
                 affichage_navigation += '<li><a href="/SupprimerFiliere_langue">Supprimer une filière langue</a></li>';
             affichage_navigation += '</ul>';
+            affichage_navigation += '<h5>Créneaux</h5>';
+            affichage_navigation += '<ul>';
+                affichage_navigation += '<li><a href="/EnregistrerCreneau">Enregistrer un creneau</a></li>';
+                affichage_navigation += '<li><a href="/ListerCreneau">Lister les creneaux</a></li>';
+                affichage_navigation += '<li><a href="/RechercherCreneau">Rechercher un creneau</a></li>';
+                affichage_navigation += '<li><a href="/ModifierCreneau">Modifier un creneau</a></li>';
+                affichage_navigation += '<li><a href="/SupprimerCreneau">Supprimer un creneau</a></li>';
+            affichage_navigation += '</ul>';
             affichage_navigation += '<h5>Export de données</h5>';
             affichage_navigation += '<ul>';
                 affichage_navigation += '<li><a href="/ExportSeance">ExportSeance langue</a></li>';

@@ -25,7 +25,7 @@ class RechercherFiliere_langue extends React.Component {
                 </select>
                 <br />
                 <br />
-                <button className="btn btn-success start" onClick={this.rechercher} >Rechercher</button>
+                <button className="btn btn-primary start" onClick={this.rechercher} >Rechercher</button>
                 <br />
                 <table className="table">
                     <thead>

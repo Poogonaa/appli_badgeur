@@ -25,7 +25,7 @@ class SupprimerIntervenant extends React.Component {
                 </select>
                 <br />
                 <br />
-                <button className="btn btn-success start" onClick={this.supprimer} >Supprimer</button>
+                <button className="btn btn-danger start" onClick={this.supprimer} >Supprimer</button>
             </div>
         )   
     }

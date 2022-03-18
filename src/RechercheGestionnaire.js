@@ -25,15 +25,15 @@ class RechercherGestionnaire extends React.Component {
                 </select>
                 <br />
                 <br />
-                <button className="btn btn-success start" onClick={this.rechercher} >Rechercher</button>
+                <button className="btn btn-primary start" onClick={this.rechercher} >Rechercher</button>
                 <br />
-                <table>
+                <table className='table'>
                     <thead>
                     <tr>
-                        <td>Login</td>
-                        <td>Nom</td>
-                        <td>Prenom</td>
-                        <td>mail</td>
+                        <th scope='row'>Login</th>
+                        <th scope='row'>Nom</th>
+                        <th scope='row'>Prenom</th>
+                        <th scope='row'>mail</th>
                     </tr>
                     </thead>
                     <tbody id = "utilisateur">
@@ -71,10 +71,10 @@ class RechercherGestionnaire extends React.Component {
             });
             let utilisateur_a = "";
             utilisateur_a += "<tr>";
-            utilisateur_a += "<td>"+this.state.utilisateur.login+"</td>";
-            utilisateur_a += "<td>"+this.state.utilisateur.nom+"</td>";
-            utilisateur_a += "<td>"+this.state.utilisateur.prenom+"</td>";
-            utilisateur_a += "<td>"+this.state.utilisateur.mail+"</td>";
+            utilisateur_a += "<td scope='row'>"+this.state.utilisateur.login+"</td>";
+            utilisateur_a += "<td scope='row'>"+this.state.utilisateur.nom+"</td>";
+            utilisateur_a += "<td scope='row'>"+this.state.utilisateur.prenom+"</td>";
+            utilisateur_a += "<td scope='row'>"+this.state.utilisateur.mail+"</td>";
             utilisateur_a += "</tr>"
             document.getElementById("utilisateur").innerHTML = utilisateur_a;
         })
