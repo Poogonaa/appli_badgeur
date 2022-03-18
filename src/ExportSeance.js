@@ -32,7 +32,7 @@ class ExportSeance extends Component {
     /*let retourFetch = fetch('/seancesformations/valide/intervenant')
                 .then(res => res.json());
     return retourFetch;*/
-    return fetch('/seancesformations/valide/intervenant')
+   /* return fetch('/seancesformations/valide/intervenant')
     .then(res => res.json());
   }
  
@@ -70,3 +70,4 @@ class ExportSeance extends Component {
   }
 }
 export default ExportSeance
+*/
