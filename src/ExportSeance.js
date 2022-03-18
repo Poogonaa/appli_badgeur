@@ -4,7 +4,7 @@ import { CSVLink } from "react-csv";
 const headers = [
   { label: "Login Intervenant", key: "intervenantDto.login"},
   { label: "Prénom", key: "intervenantDto.prenom"},
-  { lable: "Nom", key: "intervenantDto.nom"},
+  { label: "Nom", key: "intervenantDto.nom"},
 
   { label: "Intitulé Cours", key: "creneauDto.coursDto.intitule"},
   { label: "Date Séance", key: "creneauDto.date" },
@@ -15,6 +15,8 @@ const headers = [
   { label: "Durée Effective (min)", key: "dureeEffective" },
   { label: "Commentaire", key: "commentaire" }
 ];
+
+
  
 class ExportSeance extends Component {
   constructor(props) {
@@ -48,13 +50,18 @@ class ExportSeance extends Component {
  
   render() {
     const { data } = this.state;
- 
+    let dateObj = new Date();
+    let month = dateObj.getUTCMonth() + 1; //months from 1-12
+    let day = dateObj.getUTCDate();
+    let year = dateObj.getUTCFullYear();
+    let date = day + "_" + month + "_" + year
+    let name_file = "Heures_effectuees_par_intervenants_"+date+".csv"
     return (
       <div>
         <input type="button" value="Export to CSV (Async)" onClick={this.downloadReport} />
         <CSVLink
           headers={headers}
-          filename="Heures_effectuees_par_intervenants.csv"
+          filename={name_file}
           data={data}
           ref={this.csvLinkEl}
         />
