@@ -48,25 +48,25 @@ render() {
                 </div>
             </div><br/>
             <br/><br/>
-        {/* Formulaire pre-rempli */}
+        {/* Formulaire pre-rempli des informations du creneau*/}
             <div>
                 <label> date: </label> <br></br>
-                <input id ="date" type="text" name="date" value={this.state.creneau.date} onChange={this.handleChange} placeholder="YYYY-mm-dd"></input>
+                <input id ="date" type="text" name="date" value={this.state.creneau.date} onChange={this.handleChange} placeholder="YYYY-mm-dd" readOnly="readOnly" ></input>
                 <br/><br/>
                 <label> Heure: </label> <br></br>
-                <input id="heure_debut" type="text" name="heure_debut" value={this.state.creneau.heure_debut} onChange={this.handleChange} placeholder="00h00"></input>
+                <input id="heure_debut" type="text" name="heure_debut" value={this.state.creneau.heure_debut} onChange={this.handleChange} placeholder="00h00" readOnly="readOnly" ></input>
                 <br/><br/>
                 <label> salle: </label> <br></br>
-                <input id="salle" type="text" name="salle" value={this.state.creneau.salle} onChange={this.handleChange} placeholder="batiment.etage.num"></input>
+                <input id="salle" type="text" name="salle" value={this.state.creneau.salle} onChange={this.handleChange} placeholder="batiment.etage.num" readOnly="readOnly" ></input>
                 <br/><br/>
                 <label> Type: </label> <br></br>
-                <input id="type" type="text" name="type" value={this.state.creneau.type} onChange={this.handleChange} placeholder="CM/TD/TP"></input>
+                <input id="type" type="text" name="type" value={this.state.creneau.type} onChange={this.handleChange} placeholder="CM/TD/TP" readOnly="readOnly" ></input>
                 <br/>
                 
             </div>
             <br/><br/>
 
-            {/* formulaire a remplir */}
+            {/* formulaire a remplir des infos de la seance effectue ou non */}
             <div>
                 <label> Duree de la senace (en minute) : </label> <br></br>
                 <input id="dureeEffective" type="text" name="dureeEffective" value={this.state.seance.duree_effective} onChange={this.handleChange_creneau} placeholder="duree de la seance en min"></input>
@@ -145,7 +145,6 @@ pointer() {
         return false;
     }
     
-    this.state.seance.cre_id = 1;
     this.state.seance.uti_id = sessionStorage.getItem("id");
     this.state.seance.valide = 0;
     console.log(this.state.seance)
@@ -154,6 +153,9 @@ pointer() {
         method: "post",
         url : '/seancesformations',
     }).then(res => {
+        this.setState({
+            creneau : res.data,
+        });
         if(document.getElementById("date").value=== "") {
             alert("Veuillez remplir tous les champs")
             return false;
@@ -178,6 +180,23 @@ pointer() {
             alert("Veuillez remplir tous les champs")
             return false;
         }
+        this.state.creneau.creneauDto = {cre_id : this.state.pointage.cre_id};
+        
+        console.log(this.state.creneau)
+        axios({
+            data:this.state.creneau,
+            method : "put",
+            url : "/seancesformations/addCreneau",
+            headers : {'Content-Type' : 'application/json'},
+        })
+        this.state.creneau.intervenantDto = {uti_id :sessionStorage.getItem("id")};
+        axios({
+            data:this.state.creneau,
+            method : "put", 
+            
+            url : "/seancesformations/addIntervenant",
+            headers : {'Content-Type' : 'application/json'},
+        })
 
         alert ("vous etes pointes")
     })
