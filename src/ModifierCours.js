@@ -37,14 +37,16 @@ class ModifierCours extends React.Component {
         return (
             <div>
                 <h2>Modification d'un cours</h2>
-                <label>Intitulé:</label>
-                <br />
-                <select name="cou_id" id="cours_recherche" onChange={this.handleChange}>
+                <div>
+                    <label>Intitulé:</label>
+                    <br />
+                    <select name="cou_id" id="cours_recherche" onChange={this.handleChange}>
                             
-                </select>
-                <br/><br/>
-                <button className="btn btn-primary start" onClick={this.rechercher} >Rechercher</button>
-                <br /><br />
+                    </select>
+                    <br/><br/>
+                    <button className="btn btn-primary start" onClick={this.rechercher} >Rechercher</button>
+                    <br /><br />
+                </div>
                 <label>Intitulé:</label>
                 <br />
                 <input type="text" name="intitule" value={this.state.cours.intitule} onChange={this.handleChange}/>
@@ -94,8 +96,8 @@ class ModifierCours extends React.Component {
                     <tbody id = "filiere_langue_lie">
                     </tbody>
                 </table>
-                <div class="row">
-                    <div class='col-md-6'>
+                <div className="row">
+                    <div className='col-md-6'>
                         <label>Ajouter une filiere langue</label>
                         <br/>
                         <select name="fil_id" id="filiere_langue_ajouter" onChange={this.handleChange_filiere_langue}>
@@ -104,7 +106,7 @@ class ModifierCours extends React.Component {
                         <br/><br/>
                         <button className="btn btn-success start" onClick={this.ajouter_filiere_langue} >Ajouter</button>
                     </div>
-                    <div class='col-md-6'>
+                    <div className='col-md-6'>
                         <label>Supprimer une filiere langue</label>
                         <br/>
                         <select name="fil_id" id="filiere_langue_supprimer" onChange={this.handleChange_filiere_langue}>
@@ -127,8 +129,8 @@ class ModifierCours extends React.Component {
                     <tbody id = "creneau_lie">
                     </tbody>
                 </table>
-                <div class="row">
-                    <div class='col-md-6'>
+                <div className="row">
+                    <div className='col-md-6'>
                         <label>Ajouter un creneau</label>
                         <br/>
                         <select name="cre_id" id="creneau_ajouter" onChange={this.handleChange_creneau}>
@@ -137,7 +139,7 @@ class ModifierCours extends React.Component {
                         <br/><br/>
                         <button className="btn btn-success start" onClick={this.ajouter_creneau} >Ajouter</button>
                     </div>
-                    <div class='col-md-6'>
+                    <div className='col-md-6'>
                         <label>Supprimer un creneau</label>
                         <br/>
                         <select name="cre_id" id="creneau_supprimer" onChange={this.handleChange_creneau}>

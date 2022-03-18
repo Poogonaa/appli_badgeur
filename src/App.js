@@ -35,6 +35,12 @@ import RechercherFiliere_langue from './RechercheFiliere_langue.js'
 import ModifierFiliere_langue from './ModifierFiliere_langue.js'
 import SupprimerFiliere_langue from './SupprimerFiliere_langue.js'
 
+import EnregistrerCreneau from './EnregistrerCreneau.js'
+import ListerCreneau from './ListerCreneau.js'
+import RechercherCreneau from './RechercherCreneau.js'
+import ModifierCreneau from './ModifierCreneau.js'
+import SupprimerCreneau from './SupprimerCreneau.js'
+
 import ListerSeanceEffectuee from './ListerSeanceEffectuee.js'
 
 import Pointage from './Pointage.js'
@@ -81,6 +87,12 @@ class App extends React.Component {
             <Route exact path="/RechercherFiliere_langue" element={<RechercherFiliere_langue />} />
             <Route exact path="/ModifierFiliere_langue" element={<ModifierFiliere_langue />} />
             <Route exact path="/SupprimerFiliere_langue" element={<SupprimerFiliere_langue />} />
+
+            <Route exact path="/EnregistrerCreneau" element={<EnregistrerCreneau/>}/>
+            <Route exact path="/ListerCreneau" element={<ListerCreneau/>}/>
+            <Route exact path="/RechercherCreneau" element={<RechercherCreneau/>}/>
+            <Route exact path="/ModifierCreneau" element={<ModifierCreneau/>}/>
+            <Route exact path="/SupprimerCreneau" element={<SupprimerCreneau/>}/>
 
             <Route exact path="/ListerSeanceEffectuee" element={<ListerSeanceEffectuee />}/>
 

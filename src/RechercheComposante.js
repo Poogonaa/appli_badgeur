@@ -21,12 +21,12 @@ class RechercherComposante extends React.Component {
                 <br/> <br/>
                 <select name="com_id" id="composante_r" onChange={this.handleChange}></select>
                 <br/> <br/>
-                <button className="btn btn-success start" onClick={this.rechercher}>Rechercher </button>
+                <button className="btn btn-primary start" onClick={this.rechercher}>Rechercher </button>
                 <br/>
-                <table>
+                <table className='table'>
                     <thead>
                         <tr>
-                            <td>Nom Composante</td>
+                            <th scope='row'>Nom</th>
                         </tr>
                     </thead>
                     <tbody id ="composante"></tbody>
@@ -68,7 +68,7 @@ class RechercherComposante extends React.Component {
             });
             let composante_a = "";
             composante_a += "<tr>";
-            composante_a += "<td>"+this.state.composante.nomComposante+"</td>";
+            composante_a += "<td scope='row'>"+this.state.composante.nomComposante+"</td>";
             composante_a += "</tr>";
             document.getElementById("composante").innerHTML = composante_a;
 

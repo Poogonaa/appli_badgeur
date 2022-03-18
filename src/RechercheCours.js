@@ -24,9 +24,16 @@ class RechercherCours extends React.Component {
                             
                 </select>
                 <br /><br />
-                <button className="btn btn-success start" onClick={this.rechercher} >Rechercher</button>
+                <button className="btn btn-primary start" onClick={this.rechercher} >Rechercher</button>
                 <br/><br/>
-                <p id="cours"></p>
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th scope='row'>Intitulé</th>
+                        </tr>
+                    </thead>
+                    <tbody id ="cours"></tbody>
+                </table>
             </div>
         )   
     }
@@ -57,7 +64,11 @@ class RechercherCours extends React.Component {
             this.setState({
                 cours: res.data
             });
-            document.getElementById("cours").innerHTML = this.state.cours.intitule;
+            let cours_a = "";
+            cours_a += "<tr>";
+            cours_a += "<td scope='row'>"+this.state.cours.intitule+"</td>";
+            cours_a += "</tr>"
+            document.getElementById("cours").innerHTML = cours_a;
         })
     }
 

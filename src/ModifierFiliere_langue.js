@@ -10,6 +10,8 @@ class ModifierFiliere_langue extends React.Component {
             filiere_langues : {},
             coursDtos : {},
             filiere_langue_cours : {},
+            composanteDto : {},
+            filiere_langue_composante : {},
         }
         this.rechercher = this.rechercher.bind(this);
         this.modifier = this.modifier.bind(this);
@@ -19,21 +21,25 @@ class ModifierFiliere_langue extends React.Component {
         this.handleChange_cours = this.handleChange_cours.bind(this);
         this.ajouter_cours = this.ajouter_cours.bind(this);
         this.supprimer_cours = this.supprimer_cours.bind(this);
+
+        this.handleChange_composante = this.handleChange_composante.bind(this);
+        this.ajouter_composante = this.ajouter_composante.bind(this);
+        this.supprimer_composante = this.supprimer_composante.bind(this);
     }
 
     render() {
         return (
             <div>
-                <h2>Rechercher une filiere langue</h2>
-                <label>Login:</label>
+                <h2>Modifier une filiere langue</h2>
                 <div>
+                    <label>Nom:</label>
                     <br />
                     <select name="fil_id" id="filiere_langue_recherche" onChange={this.handleChange}>
                             
                     </select>
                     <br />
                     <br />
-                    <button className="btn btn-success start" onClick={this.rechercher} >Rechercher</button>
+                    <button className="btn btn-primary start" onClick={this.rechercher} >Rechercher</button>
                     <br />
                     <br />
                 </div>
@@ -55,8 +61,8 @@ class ModifierFiliere_langue extends React.Component {
                     <tbody id = "cours_lie">
                     </tbody>
                 </table>
-                <div class="row">
-                    <div class='col-md-6'>
+                <div className="row">
+                    <div className='col-md-6'>
                         <label>Ajouter un cours</label>
                         <br/>
                         <select name="cou_id" id="cours_ajouter" onChange={this.handleChange_cours}>
@@ -66,7 +72,7 @@ class ModifierFiliere_langue extends React.Component {
                         <button className="btn btn-success start" onClick={this.ajouter_cours} >Ajouter</button>
                         <br/><br/>
                     </div>
-                    <div  class='col-md-6'>
+                    <div  className='col-md-6'>
                         <label>Supprimer un cours</label>
                         <br/>
                         <select name="cou_id" id="cours_supprimer" onChange={this.handleChange_cours}>
@@ -74,6 +80,34 @@ class ModifierFiliere_langue extends React.Component {
                         </select>
                         <br/><br/>
                         <button className="btn btn-danger start" onClick={this.supprimer_cours} >Supprimer</button>
+                    </div>
+                </div>
+                <br /><br />
+                <label>Composante lié</label>
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <td>Nom</td>
+                    </tr>
+                    </thead>
+                    <tbody id = "composante_lie">
+                    </tbody>
+                </table>
+                <div className="row">
+                    <div className='col-md-6'>
+                        <label>Ajouter une composante</label>
+                        <br/>
+                        <select name="com_id" id="composante_ajouter" onChange={this.handleChange_composante}>
+                            <option value="">Choisir un nom</option>
+                        </select>
+                        <br/><br/>
+                        <button className="btn btn-success start" onClick={this.ajouter_composante} >Ajouter</button>
+                        <br/><br/>
+                    </div>
+                    <div  className='col-md-6'>
+                        <label>Supprimer une composante</label>
+                        <br/><br/>
+                        <button className="btn btn-danger start" onClick={this.supprimer_composante} >Supprimer</button>
                     </div>
                 </div>
                 <br/>
@@ -115,7 +149,6 @@ class ModifierFiliere_langue extends React.Component {
                 this.setState({
                     cours_ajouter : res.data,
                 });
-                console.log(this.state.creneaux_ajouter)
                 let cours_ajouter_a = '<option value="">Choisir un intitule</option>';
                 for(const cours_ajouter of this.state.cours_ajouter){
                     cours_ajouter_a += '<option value="'+cours_ajouter.cou_id+'">'+cours_ajouter.intitule+'</option>';
@@ -127,6 +160,26 @@ class ModifierFiliere_langue extends React.Component {
                 cours_supprimer_a += '<option value="'+cours_supprimer.cou_id+'">'+cours_supprimer.intitule+'</option>';
             }
             document.getElementById("cours_supprimer").innerHTML = cours_supprimer_a;
+
+            let composante_a = "<tr>";
+            if(this.state.filiere_langue.composanteDto != null){
+                composante_a += "<td scope='row'>"+this.state.filiere_langue.composanteDto.nomComposante+"</td>";
+            }
+            composante_a += "</tr>";
+            document.getElementById("composante_lie").innerHTML = composante_a;
+            axios({
+                url : '/composantes/multi',
+                method : "get",
+                }).then(res =>{
+                this.setState({
+                    composante_ajouter : res.data,
+                });
+                let composante_ajouter_a = '<option value="">Choisir un intitule</option>';
+                for(const composante_ajouter of this.state.composante_ajouter){
+                    composante_ajouter_a += '<option value="'+composante_ajouter.com_id+'">'+composante_ajouter.nomComposante+'</option>';
+                }
+                document.getElementById("composante_ajouter").innerHTML = composante_ajouter_a;
+            })
         })
     }
 
@@ -169,7 +222,6 @@ class ModifierFiliere_langue extends React.Component {
     ajouter_cours() {
         this.state.filiere_langue_cours.fil_id = this.state.filiere_langue.fil_id;
         this.state.filiere_langue_cours.coursDtos = [this.state.coursDtos];
-        console.log(this.state.filiere_langue_cours)
         axios({
             data:this.state.filiere_langue_cours,
             method : "put",
@@ -191,6 +243,43 @@ class ModifierFiliere_langue extends React.Component {
             headers : {'Content-Type': 'application/json'},
         }).then(res => {
             alert("Cours supprimé");
+            this.rechercher();
+        })
+    }
+
+    handleChange_composante(event){
+        this.setState({
+            composanteDto: {
+                ...this.state.composanteDto,
+                [event.target.name]: event.target.value
+            }
+        });
+    }
+
+    ajouter_composante() {
+        this.state.filiere_langue_composante.fil_id = this.state.filiere_langue.fil_id;
+        this.state.filiere_langue_composante.composanteDto = this.state.composanteDto;
+        axios({
+            data:this.state.filiere_langue_composante,
+            method : "put",
+            url : '/filiere_langues/addComposante',
+            headers : {'Content-Type': 'application/json'},
+        }).then(res => {
+            alert("Composante ajoutée");
+            this.rechercher();
+        })
+    }
+
+    supprimer_composante() {
+        this.state.filiere_langue_composante.fil_id = this.state.filiere_langue.fil_id;
+        this.state.filiere_langue_composante.composanteDto = this.state.filiere_langue.composanteDto;
+        axios({
+            data:this.state.filiere_langue_composante,
+            method : "put",
+            url : '/filiere_langues/removeComposante',
+            headers : {'Content-Type': 'application/json'},
+        }).then(res => {
+            alert("Composante supprimée");
             this.rechercher();
         })
     }

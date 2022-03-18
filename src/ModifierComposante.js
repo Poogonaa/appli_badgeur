@@ -28,10 +28,10 @@ class ModifierComposante extends React.Component {
     render() {
         return(
             <div>
-                <h2>Rechercher la composante à modifier </h2>
-                <label>Nom composante</label>
+                <h2>Modifier une composante </h2>
                 <div>
-                    <br></br>
+                    <label>Nom </label>
+                    <br/>
                     <select name="com_id" id="composante" onChange={this.handleChange}></select>
                     <br/><br/>
                     <button className="btn btn-primary start" onClick={this.rechercher}>Rechercher</button>
@@ -53,8 +53,8 @@ class ModifierComposante extends React.Component {
                     <tbody id = "filiere_langue_lie">
                     </tbody>
                 </table>
-                <div class="row">
-                    <div class='col-md-6'>
+                <div className="row">
+                    <div className='col-md-6'>
                         <label>Ajouter une filiere langue</label>
                         <br/>
                         <select name="fil_id" id="filiere_langue_ajouter" onChange={this.handleChange_filiere_langue}>
@@ -63,7 +63,7 @@ class ModifierComposante extends React.Component {
                         <br/><br/>
                         <button className="btn btn-success start" onClick={this.ajouter_filiere_langue} >Ajouter</button>
                     </div>
-                    <div class='col-md-6'>
+                    <div className='col-md-6'>
                         <label>Supprimer une filiere langue</label>
                         <br/>
                         <select name="fil_id" id="filiere_langue_supprimer" onChange={this.handleChange_filiere_langue}>

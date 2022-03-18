@@ -1,13 +1,13 @@
 import axios from 'axios'
 import React from 'react'
 
-class SupprimerFiliere_langue extends React.Component {
+class SupprimerCreneau extends React.Component {
 
     constructor(props) {
         super(props)
         this.state={
-            filiere_langue : {},
-            filiere_langues : {},
+            creneau : {},
+            creneaux : {},
         }
         this.supprimer = this.supprimer.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -17,10 +17,10 @@ class SupprimerFiliere_langue extends React.Component {
     render() {
         return (
             <div>
-                <h2>Supprimer une filière langue</h2>
-                <label>Nom:</label>
+                <h2>Supprimer un creneau</h2>
+                <label>Date:</label>
                 <br />
-                <select name="fil_id" id="filiere_langue_recherche" onChange={this.handleChange}>
+                <select name="cre_id" id="creneau_recherche" onChange={this.handleChange}>
                             
                 </select>
                 <br />
@@ -34,34 +34,34 @@ class SupprimerFiliere_langue extends React.Component {
         if(sessionStorage.getItem("dtype") !== "Gestionnaire"){
             document.location.href = "/";
         }
-        axios({url : '/filiere_langues/multi',
+        axios({url : '/creneaux/multi',
                method : "get",
         }).then(res => {
             this.setState({
-                filiere_langues : res.data,
+                creneaux : res.data,
             });
-            let filiere_langue_a = '<option value="">Choisir un nom</option>';
-            for (const filiere_langue of this.state.filiere_langues) {
-                filiere_langue_a += '<option value="'+filiere_langue.fil_id+'">'+filiere_langue.nom+'</option>';
+            let creneau_a = '<option value="">Choisir un nom</option>';
+            for (const creneau of this.state.creneaux) {
+                creneau_a += '<option value="'+creneau.cre_id+'">'+creneau.date+" "+creneau.heure_debut+'</option>';
               }
-              document.getElementById("filiere_langue_recherche").innerHTML = filiere_langue_a;
+              document.getElementById("creneau_recherche").innerHTML = creneau_a;
         })
     }
 
     supprimer(){
         axios({
-            url : '/filiere_langues/'+this.state.filiere_langue.fil_id,
+            url : '/creneaux/'+this.state.creneau.cre_id,
             method : "delete",
         }).then(res => {
-            alert("Filière langue supprimée");
+            alert("Creneau supprimé");
             this.componentDidMount();
         })
     }
 
     handleChange(event){
         this.setState({
-            filiere_langue: {
-                ...this.state.filiere_langue,
+            creneau: {
+                ...this.state.creneau,
                 [event.target.name]: event.target.value
             }
         });
@@ -69,4 +69,4 @@ class SupprimerFiliere_langue extends React.Component {
     }
 
 }
-export default SupprimerFiliere_langue
+export default SupprimerCreneau

@@ -24,8 +24,6 @@ class EnregistrerCours extends React.Component {
                 <br /><br />
                 <button className="btn btn-success start" onClick={this.enregistrer} >Enregistrer</button>
                 <br />
-                <div id="add_success">
-                </div>
             </div>
         )
     }
@@ -48,8 +46,7 @@ class EnregistrerCours extends React.Component {
                 alert("Veuillez renseigner un nom pour le cours!");
                 return false;
             }
-            alert("Ajout réussi!");
-            document.getElementById("intitule").value="";
+            alert('Cours ajouté');
         })
     }
 

@@ -21,7 +21,7 @@ class SupprimerComposante extends React.Component {
                 <br/>
                 <select name="com_id" id="composante_r" onChange={this.handleChange}></select>
                 <br/> <br/>
-                <button className="btn btn-success start" onClick={this.supprimer}>Supprimer </button>
+                <button className="btn btn-danger start" onClick={this.supprimer}>Supprimer </button>
             </div>
         )
     }

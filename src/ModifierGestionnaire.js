@@ -18,16 +18,16 @@ class ModifierGestionnaire extends React.Component {
     render() {
         return (
             <div>
-                <h2>Rechercher un gestionnaire</h2>
-                <label>Login:</label>
+                <h2>Modifier un gestionnaire</h2>
                 <div>
+                    <label>Login:</label>
                     <br />
                     <select name="uti_id" id="utilisateur" onChange={this.handleChange}>
                             
                     </select>
                     <br />
                     <br />
-                    <button className="btn btn-success start" onClick={this.rechercher} >Rechercher</button>
+                    <button className="btn btn-primary start" onClick={this.rechercher} >Rechercher</button>
                     <br />
                     <br />
                 </div>
